@@ -20,11 +20,18 @@ public class CinemaController {
 		return "home"; 
 	}
 	
-	@RequestMapping("/pick")
+	@RequestMapping("/list")
 	public String pick(Model model)
 	{
-		log.info("pick");
-		return "pick";
+		log.info("list");
+		return "list";
+	}
+	
+	@RequestMapping("/community")
+	public String community(Model model)
+	{
+		log.info("community");
+		return "community";
 	}
 	
 }

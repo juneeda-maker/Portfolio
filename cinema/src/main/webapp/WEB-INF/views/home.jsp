@@ -31,7 +31,7 @@
 	    <div class="collapse navbar-collapse" id="navbarColor02">
 	      <ul class="navbar-nav me-auto">
 	        <li class="nav-item">
-	          <a class="nav-link active" href="#">Home
+	          <a class="nav-link active" href="home">Home
 	            <span class="visually-hidden">(current)</span>
 	          </a>
         	</li>
@@ -39,7 +39,7 @@
 	          <a class="nav-link" href="#">Features</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Pricing</a>
+	          <a class="nav-link" href="community">커뮤니티</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">About</a>
@@ -86,7 +86,7 @@
 	    </div>
 	    
 	  	<div style="width:70%; margin:auto;" class="d-grid gap-2">
-			  <button class="btn btn-lg btn-primary" type="button">영화 찾기</button>
+			  <button class="btn btn-lg btn-primary" type="button" onclick="location.href='list'">영화 찾기</button>
 		</div>
 	    
     
