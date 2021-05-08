@@ -9708,7 +9708,9 @@ button.bg-dark:focus {
 }
 
 .text-center {
+	
   text-align: center !important;
+  vertical-align: middle;
 }
 
 @media (min-width: 576px) {
