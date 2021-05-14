@@ -9,7 +9,17 @@
 </head>
 <body>
     <h1>테스트입니다.</h1>
-    <div id="dataArea"></div>
+    <div id="dataArea1"></div>
+    <div id="dataArea2"></div>
+    <div id="dataArea3"></div>
+    <div id="dataArea4"></div>
+    <div id="dataArea5"></div>
+    <div id="dataArea6"></div>
+    <div id="dataArea7"></div>
+    <div id="dataArea8"></div>
+    <div id="dataArea9"></div>
+    <div id="dataArea10"></div>
+    
 </body>
 
 
@@ -18,6 +28,26 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
  
 <script>
+/*
+function resultHtml(data){
+	var html = "<table border = '1'>";
+	html += "<tr>";
+	html += "<th>영화 이름</th>";
+	html += "</tr>";
+
+	$.each(data, function(key, value){
+		html += "<tr align = 'center'>";
+		html += "<td>" + value.movieNm + "</td>";
+		html += "</tr>";
+	
+	});
+	
+	html += "</table>";
+	$("#dataArea").empty();
+	$("#dataArea").append(html);
+}
+*/
+
 $( document ).ready(function() {
     $.ajax({
         url:'http://localhost:8080/home/list',
@@ -26,23 +56,43 @@ $( document ).ready(function() {
             Name:'ajax',
             Age:'10'
         },
-        dataType:'text',
+        dataType:'json',
         beforeSend:function(jqXHR) {
             console.log("ajax호출전");
         },
         success: function(data) {
             console.log("호출성공");
-            console.log(JSON.parse(data));
+            //console.log(JSON.parse(data));
+            //resultHtml(data);
             
- 
-            $("#dataArea").html(data);
-        },
-        error:function(jqXHR) {
-            console.log("실패입니다.");
-        }
+            
+          // for(var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
+            //	console.log(data.boxOfficeResult.dailyBoxOfficeList.length);
+            //	$("#dataArea1").html(data.boxOfficeResult.dailyBoxOfficeList[0].movieNm);
+            	
+            //	console.log(data.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
+            	
+            	$("#dataArea1").html(data.boxOfficeResult.dailyBoxOfficeList[0].movieNm);
+            	$("#dataArea2").html(data.boxOfficeResult.dailyBoxOfficeList[1].movieNm); 
+            	$("#dataArea3").html(data.boxOfficeResult.dailyBoxOfficeList[2].movieNm);
+            	$("#dataArea4").html(data.boxOfficeResult.dailyBoxOfficeList[3].movieNm); 
+            	$("#dataArea5").html(data.boxOfficeResult.dailyBoxOfficeList[4].movieNm); 
+            	$("#dataArea6").html(data.boxOfficeResult.dailyBoxOfficeList[5].movieNm); 
+            	$("#dataArea7").html(data.boxOfficeResult.dailyBoxOfficeList[6].movieNm); 
+            	$("#dataArea8").html(data.boxOfficeResult.dailyBoxOfficeList[7].movieNm); 
+            	$("#dataArea9").html(data.boxOfficeResult.dailyBoxOfficeList[8].movieNm); 
+            	$("#dataArea10").html(data.boxOfficeResult.dailyBoxOfficeList[9].movieNm); 
+
+            }
+            
+        
+        
     });
 });
+
+
 </script>
+
 
 </html>
  
