@@ -8,10 +8,11 @@ import java.net.URL;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/*", produces = "application/json;charset=utf-8")
+@RequestMapping(value = "/home/*", produces = "application/json;charset=utf-8", method= {RequestMethod.GET, RequestMethod.POST})
 public class apiController {
 	
 	@GetMapping("/list")
@@ -39,6 +40,6 @@ public class apiController {
 			{
 				e.printStackTrace();
 			}
-		return result + "</xmp>";
+		return result.toString();
 	}
 }

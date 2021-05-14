@@ -63,57 +63,9 @@
 	  </div>
 	</nav>
 	<!--  검색 파트  -->
-	<form>
-	  	<fieldset>
-	    <legend>영화검색</legend>
-	    <div style="width:70%; margin:auto;" class="form-group">
-	      <label for="exampleSelect1" class="form-label mt-4">장르 선택</label>
-	      <select class="form-select" id="exampleSelect1">
-	        <option>로맨스/멜로</option>
-	        <option>SF/판타지</option>
-	        <option>공포/스릴러</option>
-	        <option>드라마</option>
-	        <option>미스터리</option>
-	        <option>어드벤쳐</option>
-	        <option>코미디</option>
-	      </select>
-	    </div>
-    
-	    <div style="width:70%; margin:auto;" class="form-group">
-	      <label for="exampleInputEmail1" class="form-label mt-4">영화 검색</label>
-	      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-	      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-	    </div>
-	    
-	  	<div style="width:70%; margin:auto;" class="d-grid gap-2">
-			  <button class="btn btn-lg btn-primary" type="button" >영화 찾기</button>
-		</div>
-	    
-	    <div id="display"></div>
-    
-	</form>
 	
-	<script type= "text/javascript">
-		$(document).ready(function () {
-		    $('btn btn-lg btn-primary').on('click', function () {
-		        // property를 설정한다.
-		        $.ajax({
-		            url : "http://localhost:8080/home/list",
-		            type : "get",
-		            data : {t1 : "Hello", t2 : "World"},
-		            success : function (data) {
-		                alert(data);
-		            },
-		            error : function (data) {
-		                alert(data);
-		            }
-		        });
-		    })
-		});
-	     
-	</script>
+	    
+    
 
     </body>
 </html>
-
-
