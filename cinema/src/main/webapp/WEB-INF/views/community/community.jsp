@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -70,8 +71,21 @@
       <th scope="col">제목</th>
       <th scope="col">작성자</th>
       <th scope="col">작성일</th>
+      <th scope="col">수정일</th>
     </tr>
   </thead>
+  
+  <c:forEach items="${list}" var="board">
+  	<tr class="table-active">
+  		<td><c:out value="${board.bno }" /></td>
+  		<td><c:out value="${board.title }" /></td>
+  		<td><c:out value="${board.writer }" /></td>
+  		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }" /></td>
+  		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate }" /></td>
+  	</tr>
+  </c:forEach>
+  
+  <!--  
   <tbody>
     <tr class="table-active">
       <th scope="row">Active</th>
@@ -81,6 +95,7 @@
     </tr>
     
   </tbody>
+  -->
 </table>
 	    
     

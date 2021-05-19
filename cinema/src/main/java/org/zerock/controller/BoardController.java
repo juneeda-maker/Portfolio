@@ -21,7 +21,7 @@ public class BoardController {
 
 	private BoardService service;
 	
-	@GetMapping("/list")
+	@GetMapping("/community")
 	public void list(Model model)
 	{
 		log.info("list");

@@ -83,4 +83,15 @@ public class BoardControllerTests {
 		
 		log.info(resultPage);
 	}
+
+	@Test
+	public void testRegister()throws Exception{
+		
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/community/register")
+				.param("title", "테스트 새글 제목")
+				.param("content", "테스트 새글 내용")
+				.param("writer", "user00")
+				).andReturn().getModelAndView().getViewName();
+		log.info(resultPage);
+	}
 }
