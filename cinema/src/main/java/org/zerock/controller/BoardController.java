@@ -64,4 +64,10 @@ public class BoardController {
 		}
 		return "redirect:/community/list";
 	}
+	
+	@GetMapping("/register")
+	public void register()
+	{
+		
+	}
 }
