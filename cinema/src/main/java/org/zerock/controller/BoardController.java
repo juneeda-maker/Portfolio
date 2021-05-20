@@ -35,13 +35,13 @@ public class BoardController {
 		service.register(board);
 		rttr.addFlashAttribute("result", board.getBno());
 		
-		return "redirect:/community/list";
+		return "redirect:/community/community";
 	}
 	
-	@GetMapping("/get")
+	@GetMapping({"/get","/modify"})
 	public void get(@RequestParam("bno") Long bno, Model model) {
 		
-		log.info("/get");
+		log.info("/get or modify");
 		model.addAttribute("board", service.get(bno));
 	}
 	
@@ -53,7 +53,7 @@ public class BoardController {
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/community/list";
+		return "redirect:/community/community";
 	}
 	
 	@PostMapping("/remove")
@@ -62,7 +62,7 @@ public class BoardController {
 		if(service.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/community/list";
+		return "redirect:/community/community";
 	}
 	
 	@GetMapping("/register")

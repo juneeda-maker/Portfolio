@@ -21,22 +21,6 @@
         <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-    
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    	<div class="modal-dialog">
-    		<div class="modal-content">
-    			<div class="modal-header">
-    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-    			</div>
-    			<div class="modal-body">처리가 완료되었습니다.</div>
-    			<div class="modal-footer">
-    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    				<button type="button" class="btn btn-primary">Save Changes</button>
-    			</div>
-    		</div>
-    	</div>
-    </div>
         <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   		<div class="container-fluid">
@@ -80,59 +64,76 @@
 	  </div>
 	</nav>
 	
-	<div class="panel-heading">Board List Page
-		<button id='regBtn' type="button" class="btn btn-xs pull-right">Register New Board</button>
+	<form role="form" action="/community/modify" method="post">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Board Read Page</div>
+				<div class="panel-body">
+						<div class="form-group">
+							<label>Bno</label>
+							<input class="form-control" name='bno' value='<c:out value="${board.bno }"/>'>
+						</div>
+						
+						<div class="form-group">
+							<label>Title</label>
+							<input class="form-control" name='title' value='<c:out value="${board.title }"/>'>
+						</div>
+						
+						<div class="form-group">
+							<label>Text area</label>
+							<textarea class="form-control" rows="3" name='content'><c:out value="${board.content }" /></textarea>
+						</div>
+						
+						<div class="form-group">
+							<label>Writer</label>
+							<input class="form-control" name='writer' value='<c:out value="${board.writer }"/>' readonly="readonly">
+						</div>
+						
+						<div class="form-group">
+							<label>RegDate</label>
+							<input class="form-control" name='regDate' value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.regdate }"/>' readonly="readonly">
+						</div>
+						
+						<div class="form-group">
+							<label>update Date</label>
+							<input class="form-control" name='updateDate' value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.updateDate }"/>' readonly="readonly">
+						</div>
+						
+						<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+						<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+						<button type="submit" data-oper='community' class="btn btn-info">List</button>
+				</div>
+			</div>
+		</div>
 	</div>
+	</form>
 	
-	<!--  검색 파트  -->
-	<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">번호</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성자</th>
-      <th scope="col">작성일</th>
-      <th scope="col">수정일</th>
-    </tr>
-  </thead>
   
-  <c:forEach items="${list}" var="board">
-  	<tr class="table-active">
-  		<td><c:out value="${board.bno }" /></td>
-  		<td><a href='/community/get?bno=<c:out value="${board.bno }"/>'>
-  			<c:out value="${board.title }"/></a></td>
-  		<td><c:out value="${board.writer }" /></td>
-  		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }" /></td>
-  		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate }" /></td>
-  	</tr>
-  </c:forEach>
-</table>
-</body>
+ 
 
-<script type="text/javascript">
-	$(document).ready(
-		function(){
-			var result = '<c:out value="${result}"/>';	
-			
-			checkModal(result);
-			
-			history.replaceState({},null,null);
-			
-			function checkModal(result){
-				
-				if(result === ''){
-					return;
-				}
-				if(parseInt(result) > 0){
-					$(".modal-body").html(
-							"게시글 " + parseInt(result) + " 번이 등록되었습니.");
-				}
-				$("#myModal").modal("show");
-			}
-			
-			$("#regBtn").on("click", function(){
-				self.location = "/community/register";
-			});
-		});
-</script>
+	    
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		var formObj = $("form");
+    		$('button').on("click", function(e){
+    			e.preventDefault();
+    			
+    			var operation = $(this).data("oper");
+    			
+    			console.log(operation);
+    			
+    			if(operation === 'remove'){
+    				formObj.attr("action", "/community/remove");
+    			}else if(operation === 'community')
+    			{
+    				self.location= "/community/community";
+    				return;
+    			}
+    			formObj.submit();
+    		});
+    	});
+    </script>
+
+    </body>
 </html>
