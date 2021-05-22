@@ -127,8 +127,8 @@
     				formObj.attr("action", "/community/remove");
     			}else if(operation === 'community')
     			{
-    				self.location= "/community/community";
-    				return;
+    				formObj.attr("action", "/community/community").attr("method","get");
+    				formObj.empty();
     			}
     			formObj.submit();
     		});

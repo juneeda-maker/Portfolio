@@ -68,7 +68,7 @@ public class BoardControllerTests {
 				.andReturn()
 				.getModelAndView().getModelMap());
 	}
-	*/
+	
 	
 	@Test
 	public void testModify() throws Exception{
@@ -83,6 +83,8 @@ public class BoardControllerTests {
 		
 		log.info(resultPage);
 	}
+	
+	*/
 
 	@Test
 	public void testRegister()throws Exception{
@@ -93,5 +95,15 @@ public class BoardControllerTests {
 				.param("writer", "user00")
 				).andReturn().getModelAndView().getViewName();
 		log.info(resultPage);
+	}
+	
+	@Test
+	public void testListPaging() throws Exception{
+		
+		log.info(mockMvc.perform(
+				MockMvcRequestBuilders.get("community/community")
+				.param("pageNum", "1")
+				.param("amount", "50"))
+				.andReturn().getModelAndView().getModelMap());
 	}
 }
