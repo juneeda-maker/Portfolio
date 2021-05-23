@@ -5,12 +5,14 @@ import java.io.UnsupportedEncodingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.zerock.domain.ApiVO;
-import org.zerock.service.MovieService;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -21,8 +23,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class CinemaController {
 	
-	
-	
 	@RequestMapping("/home") 
 	public String home(Model model) 
 	{ 
@@ -30,12 +30,12 @@ public class CinemaController {
 		return "home"; 
 	}
 	
-	@RequestMapping("/search")
-	public String pick(Model model)
-	{
-		log.info("search");
-		return "search";
+	@GetMapping("/test") 
+	public String test(Model model) 
+	{ 
+		return "test"; 
 	}
+	
 	
 	@RequestMapping("/community")
 	public String community(Model model)
@@ -50,5 +50,7 @@ public class CinemaController {
 		log.info("list");
 		return "list";
 	}
+	
+	
 	
 }

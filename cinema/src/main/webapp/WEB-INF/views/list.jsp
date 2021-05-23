@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html xmlns:th="http://www.thymeleaf.org">
@@ -17,6 +19,15 @@
 </head>
 <body>
     <div id="display"></div>
+    
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">영화제목</th>
+    </tr>
+  </thead>
+	
+</table>
 </body>
 
  
@@ -49,9 +60,9 @@ function resultHtml(data)
 	html += "<th>영화 제목</th>";
 	html += "</tr>";
 	
-	for(var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++){
+	for(var i = 0; i < data.movieListResult.movieList.length; i++){
 		html += "<tr align = 'center'>";
-		html += "<td>" + data.boxOfficeResult.dailyBoxOfficeList[i].movieNm + "</td>";
+		html += "<td>" + data.movieListResult.movieList[i].movieNm + "</td>";
 		html += "</tr>";
 	}
 	

@@ -21,9 +21,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	 <beans:bean id ="movieService" class="org.zerock.service.MovieService" /> 
+	 
 	
 	<context:component-scan base-package="org.zerock.controller" />
+	
+	
 	
 	
 	
