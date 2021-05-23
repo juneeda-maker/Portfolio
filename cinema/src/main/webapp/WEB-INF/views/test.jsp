@@ -29,7 +29,7 @@
 			var keyword = $('#keyword').val();
 			$.ajax({
 				type: "GET",
-				url: "search.do", 
+				url: "/search.do", 
 				data: {keyword : keyword},
 				dataType: "json",
 				contentType: "application/json; charset:UTF-8",
@@ -44,7 +44,7 @@
 					var html = "";
 					var item = data.items;
 					
-					html += '<table class = "table"><thead><tr><th scope="col">감독</th></tr></thead>';
+					html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
 					html += '<tbody>';
 					
 					for(var i in item){
@@ -52,7 +52,7 @@
 						var title = item[i].title;
 						
 						html += '<tr>';
-						html += '<td>' + item[i] + '</td>';
+						html += '<td>' + title + '</td>';
 						html += '</tr>';
 						
 						$('#keyword').empty();

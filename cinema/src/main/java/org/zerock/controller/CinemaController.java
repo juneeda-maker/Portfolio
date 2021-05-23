@@ -30,7 +30,7 @@ public class CinemaController {
 		return "home"; 
 	}
 	
-	@GetMapping("/test") 
+	@RequestMapping("/test") 
 	public String test(Model model) 
 	{ 
 		return "test"; 
