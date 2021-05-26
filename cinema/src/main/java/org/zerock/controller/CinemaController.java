@@ -36,6 +36,12 @@ public class CinemaController {
 		return "test"; 
 	}
 	
+	@RequestMapping("/result") 
+	public String result(Model model) 
+	{ 
+		return "result"; 
+	}
+	
 	
 	@RequestMapping("/community")
 	public String community(Model model)

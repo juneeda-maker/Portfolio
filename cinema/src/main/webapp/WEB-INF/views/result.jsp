@@ -24,51 +24,6 @@
 	<div id="result"></div>
 	
 	<script>
-		function find(){
-			var keyword = $('#keyword').val();
-			$.ajax({
-				type: "GET",
-				url: "/search.do", 
-				data: {keyword : keyword},
-				dataType: "json",
-				contentType: "application/json; charset:UTF-8",
-				error: function(error){
-					console.log("error");
-				},
-				success: function(data){
-					$("#result").empty();
-					console.log("success");
-					console.log(data);
-					
-					var html = "";
-					var item = data.items;
-					
-					html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
-					html += '<tbody>';
-					
-					
-					for(var i in item){
-						
-						var title = item[i].title;
-						
-						html += '<tr>';
-						html += '<td>';
-						html += '<button onclick=location.href="http://localhost:8080/result">';
-						html += title;
-						html += '</button>';
-						html +=  '</td>';
-						html += '</tr>';
-						
-						
-						$('#keyword').empty();
-						title = "";
-					}
-					
-					html += '</tbody></table>';
-					$("#result").append(html);
-				}
-			});
-		}
 		
 	</script>
 	

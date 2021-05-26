@@ -16,6 +16,22 @@ import org.zerock.domain.MovieVO;
 
 import java.net.HttpURLConnection;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+import org.zerock.domain.MovieVO;
+
+import java.net.HttpURLConnection;
+
 @Service
 public class MovieServiceImpl {
 	
@@ -93,5 +109,28 @@ public class MovieServiceImpl {
 		}catch(IOException e) {
 			throw new RuntimeException("API 응답을 읽는데 실패함", e);
 		}
+	}
+	
+	
+	public String link_btn(String keyword, String title)
+	{
+		String clientId = "DCJ09aiyajA2FDSBr92m";
+		String clientSecret = "HywUosgpWN";
+		String text = null;
+		
+		try {
+			text = URLEncoder.encode(keyword, "UTF-8");
+		}catch (UnsupportedEncodingException e) {
+			throw new RuntimeException("검색어 인코딩 실패", e);
+		}
+		
+		String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + text;
+		
+		Map<String, String> requestHeaders = new HashMap<>();
+		requestHeaders.put("X-Naver-Client-Id", clientId);
+		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+		String responseBody = get(apiURL, requestHeaders);
+		
+		return responseBody;
 	}
 }

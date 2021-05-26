@@ -47,7 +47,7 @@ $(document).ready(function() {
         success: function(data) {
             console.log("호출성공");
             resultHtml(data);
-            //console.log(JSON.parse(data));
+            
 
          }
     });
