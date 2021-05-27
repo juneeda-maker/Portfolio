@@ -15,14 +15,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="result">
+	<form action="result" method="post">
 		<input class="form-control" name="keyword" onKeyUp="find()"
 			id="keyword" placeholder="영화 제목" value="" style="width: 300px">
 		<button type="submit" class="btn btn-outline-primary" onclick="find()">검색</button>
 	</form>
 	
 	
-	<div id="result2"></div>
+	<div id="result2">결과 출력될 위치이 </div>
 	
 	<script>
 		function find(){

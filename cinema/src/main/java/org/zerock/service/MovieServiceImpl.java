@@ -112,25 +112,45 @@ public class MovieServiceImpl {
 	}
 	
 	
-	public String link_btn(String keyword, String title)
+	public String Result(String keyword)
 	{
+		StringBuffer result = new StringBuffer();
 		String clientId = "DCJ09aiyajA2FDSBr92m";
 		String clientSecret = "HywUosgpWN";
 		String text = null;
 		
 		try {
 			text = URLEncoder.encode(keyword, "UTF-8");
+			
+			
+			String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + text;
+			
+			Map<String, String> requestHeaders = new HashMap<>();
+			requestHeaders.put("X-Naver-Client-Id", clientId);
+			requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+			String responseBody = get(apiURL, requestHeaders);
+			
+			URL url = new URL(responseBody.toString());
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn.setRequestMethod("GET");
+			BufferedReader rd;
+			
+			rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			String line;
+			while((line = rd.readLine()) != null) {
+				result.append(line + "\n");
+			}
+			rd.close();
+			conn.disconnect();
 		}catch (UnsupportedEncodingException e) {
 			throw new RuntimeException("검색어 인코딩 실패", e);
+		}catch (Exception e)
+		{
+			e.printStackTrace();
 		}
 		
-		String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + text;
 		
-		Map<String, String> requestHeaders = new HashMap<>();
-		requestHeaders.put("X-Naver-Client-Id", clientId);
-		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-		String responseBody = get(apiURL, requestHeaders);
 		
-		return responseBody;
+		return result + "";
 	}
 }

@@ -43,9 +43,20 @@ public class MovieController {
 		}
 		*/
 		
+		@RequestMapping("/result") 
+		public String result(Model model) 
+		{ 
+			return "result"; 
+		}
 		
 		
-	
+		@RequestMapping(value="result.do", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+		@ResponseBody
+		public String getResult(@RequestParam(defaultValue="") String keyword)
+		{
+			return serviceimpl.findkeyword(keyword);
+		}
+		
 	
 	
 }
