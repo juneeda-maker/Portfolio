@@ -11,17 +11,18 @@
         
         <!-- Core theme JS-->
         <script src="/resources/js/scripts.js"></script>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
+	<form action="result">
 		<input class="form-control" name="keyword" onKeyUp="find()"
-			id="keyword" placeholder="영화 제목" style="width: 300px">
-		<button type="button" class="btn btn-outline-primary" onclick="find()">검색</button>
+			id="keyword" placeholder="영화 제목" value="" style="width: 300px">
+		<button type="submit" class="btn btn-outline-primary" onclick="find()">검색</button>
 	</form>
 	
-	<div id="result"></div>
+	
+	<div id="result2"></div>
 	
 	<script>
 		function find(){
@@ -36,7 +37,7 @@
 					console.log("error");
 				},
 				success: function(data){
-					$("#result").empty();
+					$("#result2").empty();
 					console.log("success");
 					console.log(data);
 					
@@ -53,9 +54,7 @@
 						
 						html += '<tr>';
 						html += '<td>';
-						html += '<button onclick=location.href="http://localhost:8080/result">';
 						html += title;
-						html += '</button>';
 						html +=  '</td>';
 						html += '</tr>';
 						
@@ -65,10 +64,12 @@
 					}
 					
 					html += '</tbody></table>';
-					$("#result").append(html);
+					$("#result2").append(html);
 				}
 			});
 		}
+		
+		
 		
 	</script>
 	

@@ -11,15 +11,16 @@
         
         <!-- Core theme JS-->
         <script src="/resources/js/scripts.js"></script>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
-		<input class="form-control" name="keyword" onKeyUp="find()"
-			id="keyword" placeholder="영화 제목" style="width: 300px">
-		<button type="button" class="btn btn-outline-primary" onclick="find()">검색</button>
-	</form>
+	<%
+		String keyword = request.getParameter("keyword");
+		System.out.println(keyword);
+		System.out.println("----");
+		
+	%>
 	
 	<div id="result"></div>
 	
