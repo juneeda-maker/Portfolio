@@ -22,7 +22,7 @@
 	</form>
 	
 	
-	<div id="result2">결과 출력될 위치이 </div>
+	<div id="result2"></div>
 	
 	<script>
 		function find(){

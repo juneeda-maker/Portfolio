@@ -70,7 +70,7 @@
 					html += title
 					html +=  '</td>';
 					html += '<td>' + link + '</td>';
-					html += '<td>' + image + '</td>';
+					html += '<td>' + '<img src=' + image + '>' + '</td>';
 					html += '<td>' + subtitle + '</td>';
 					html += '<td>' + pubDate + '</td>';
 					html += '<td>' + director + '</td>';
@@ -85,7 +85,7 @@
 					pubDate = "";
 					director = "";
 					actor = "";
-					userRating = "";
+					serRating = "";
 				}
 				
 				html += '</tbody></table>';
