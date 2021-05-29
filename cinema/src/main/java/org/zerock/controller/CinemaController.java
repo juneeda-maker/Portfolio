@@ -30,12 +30,6 @@ public class CinemaController {
 		return "home"; 
 	}
 	
-	@RequestMapping("/test") 
-	public String test(Model model) 
-	{ 
-		return "test"; 
-	}
-	
 	@RequestMapping("/community")
 	public String community(Model model)
 	{

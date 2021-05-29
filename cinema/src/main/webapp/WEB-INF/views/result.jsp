@@ -22,10 +22,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>검색 결과 : 
-		<%=keyword %>
-	</h1>
-	<button type="button" onclick="find()">결과보기</button>
+	<div class="container">
+		<h1>검색 결과 : <%=keyword %></h1>
+	</div>
+	
+	<button type="button" class="btn btn-light" onclick="find()">결과보기</button>
 	<div id="result">
 		
 	</div>

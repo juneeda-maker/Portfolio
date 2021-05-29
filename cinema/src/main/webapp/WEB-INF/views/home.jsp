@@ -6,7 +6,11 @@
 <html lang="en">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"> 
         <!-- Core theme JS-->
+        
         <script src="/resources/js/scripts.js"></script>
     <head>
         <meta charset="utf-8" />
@@ -63,54 +67,71 @@
 	  </div>
 	</nav>
 	<!--  검색 파트  -->
-	<form>
-	  	<fieldset>
-	    <legend>영화검색</legend>
-	    <div style="width:70%; margin:auto;" class="form-group">
-	      <label for="exampleSelect1" class="form-label mt-4">장르 선택</label>
-	      <select class="form-select" id="exampleSelect1">
-	        <option>로맨스/멜로</option>
-	        <option>SF/판타지</option>
-	        <option>공포/스릴러</option>
-	        <option>드라마</option>
-	        <option>미스터리</option>
-	        <option>어드벤쳐</option>
-	        <option>코미디</option>
-	      </select>
-	    </div>
-    
-	    <div style="width:70%; margin:auto;" class="form-group">
+	
+	<form action="result" method="post">
+	  	<div style="width:70%; margin:auto;" class="form-group">
 	      <label for="exampleInputEmail1" class="form-label mt-4">영화 검색</label>
-	      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+	      <input class="form-control" id="keyword" name="keyword" onKeyUp="find()"
+	      			placeholder="영화 제목" value="">
 	      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	    </div>
 	    
 	  	<div style="width:70%; margin:auto;" class="d-grid gap-2">
-			  <button class="btn btn-lg btn-primary" type="button" >영화 찾기</button>
+			  <button class="btn btn-lg btn-primary" type="submit" onclick="find()">영화 찾기</button>
 		</div>
 	    
-	    <div id="display"></div>
+	    <div id="result2"></div>
     
 	</form>
 	
-	<script type= "text/javascript">
-		$(document).ready(function () {
-		    $('btn btn-lg btn-primary').on('click', function () {
-		        // property를 설정한다.
-		        $.ajax({
-		            url : "http://localhost:8080/home/list",
-		            type : "get",
-		            data : {t1 : "Hello", t2 : "World"},
-		            success : function (data) {
-		                alert(data);
-		            },
-		            error : function (data) {
-		                alert(data);
-		            }
-		        });
-		    })
-		});
-	     
+	
+	<script>
+		function find(){
+			var keyword = $('#keyword').val();
+			$.ajax({
+				type: "GET",
+				url: "/search.do", 
+				data: {keyword : keyword},
+				dataType: "json",
+				contentType: "application/json; charset:UTF-8",
+				error: function(error){
+					console.log("error");
+				},
+				success: function(data){
+					$("#result2").empty();
+					console.log("success");
+					console.log(data);
+					
+					var html = "";
+					var item = data.items;
+					
+					html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
+					html += '<tbody>';
+					
+					
+					for(var i in item){
+						
+						var title = item[i].title;
+						
+						html += '<tr>';
+						html += '<td>';
+						html += title;
+						html +=  '</td>';
+						html += '</tr>';
+						
+						
+						$('#keyword').empty();
+						title = "";
+					}
+					
+					html += '</tbody></table>';
+					$("#result2").append(html);
+				}
+			});
+		}
+		
+		
+		
 	</script>
 
     </body>
