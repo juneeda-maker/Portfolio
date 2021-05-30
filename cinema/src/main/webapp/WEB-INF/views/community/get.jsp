@@ -104,7 +104,7 @@
   			operForm.attr("action", "/community/modify").submit();
   		});
   		
-  		$("button[data-oper='list']").on("click", function(e){
+  		$("button[data-oper='community']").on("click", function(e){
   			operForm.find("#bno").remove();
   			operForm.attr("action","/community/community")
   			operForm.submit();
