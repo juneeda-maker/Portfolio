@@ -50,7 +50,7 @@ public class MovieController {
 		}
 		
 		
-		@RequestMapping(value="result.do", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+		@RequestMapping(value="result", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 		@ResponseBody
 		public String getResult(@RequestParam(defaultValue="") String keyword)
 		{
