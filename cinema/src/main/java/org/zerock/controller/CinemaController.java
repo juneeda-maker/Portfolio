@@ -44,6 +44,26 @@ public class CinemaController {
 		return "list";
 	}
 	
+	@RequestMapping("/customLogin")
+	public String loginpage(Model model)
+	{
+		log.info("customLogin");
+		return "customLogin";
+	}
 	
+	/*
+	@GetMapping("/customLogin")
+	public void login(String error, String logout, Model model)
+	{	
+		if(error != null)
+		{
+			model.addAttribute("error", "Login Error Check Your Account");
+		}
+		if(logout != null)
+		{
+			model.addAttribute("logout", "Logout!!!");
+		}
+	}
+	*/
 	
 }
