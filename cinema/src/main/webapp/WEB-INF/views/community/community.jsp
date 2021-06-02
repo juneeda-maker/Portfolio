@@ -53,7 +53,7 @@
 	          </a>
         	</li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Features</a>
+	          <a class="nav-link" href="/customLogin">로그인</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="community">커뮤니티</a>

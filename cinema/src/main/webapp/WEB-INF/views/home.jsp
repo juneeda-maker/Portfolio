@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -59,10 +60,14 @@
 	          </div>
 	        </li>
 	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-sm-2" type="text" placeholder="Search">
-	        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-	      </form>
+	      
+	      <p>
+	      <sec:authorize access="isAuthenticated()">
+	      	<sec:authentication property="principal.username" var="userid" />
+                    <div id="user_id">안녕하세요. ${userid }</div>
+	     </sec:authorize>
+	    </p>
+	     
 	    </div>
 	  </div>
 	</nav>
