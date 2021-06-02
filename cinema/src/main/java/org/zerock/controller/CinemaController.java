@@ -44,12 +44,14 @@ public class CinemaController {
 		return "list";
 	}
 	
+	/*
 	@RequestMapping("/customLogin")
 	public String loginpage(Model model)
 	{
 		log.info("customLogin");
 		return "customLogin";
 	}
+	*/
 	
 	/*
 	@GetMapping("/customLogin")
