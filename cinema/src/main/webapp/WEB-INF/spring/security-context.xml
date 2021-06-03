@@ -54,11 +54,10 @@
 
 		<!-- <security:csrf disabled="true"/> -->
 
-
-		<security:remember-me
-			data-source-ref="dataSource" token-validity-seconds="604800" />
+		<!--  		<security:remember-me
+			data-source-ref="dataSource" token-validity-seconds="604800" /> -->
 			
-		<security:logout logout-url="/customLogout"
+		<security:logout logout-url="/customLogout" logout-success-url="/home" delete-cookies="JSESSIONID"
 			invalidate-session="true"/>	
 		
 

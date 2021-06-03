@@ -56,8 +56,9 @@
 								<!-- Change this to a button or input when using this as a form -->
 								<a href="home" class="btn btn-lg btn-success btn-block">Logout</a>
 							</fieldset>
+							<!--  
 							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
+								value="${_csrf.token}" /> -->
 						</form>
 					</div>
 				</div>

@@ -61,8 +61,11 @@
 	        </li>
 	      </ul>
 	      
-	      <sec:authorize access="isAuthenticated()">
-	      	<button type="button" onclick="location.href='customLogout'">로그아웃</button>
+	      <sec:authorize access="isAnonymous()">
+	      	<a href="/customLogin">로그인</a>
+	     </sec:authorize>
+	     <sec:authorize access="isAuthenticated()">
+	      	<a href="/customLogout">로그아웃</a>
 	     </sec:authorize>
 	      
 	      <p>
