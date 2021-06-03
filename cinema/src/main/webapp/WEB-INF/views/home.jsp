@@ -61,6 +61,10 @@
 	        </li>
 	      </ul>
 	      
+	      <sec:authorize access="isAuthenticated()">
+	      	<button type="button" onclick="location.href='customLogout'">로그아웃</button>
+	     </sec:authorize>
+	      
 	      <p>
 	      <sec:authorize access="isAuthenticated()">
 	      	<sec:authentication property="principal.username" var="userid" />

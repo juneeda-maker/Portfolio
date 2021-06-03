@@ -10,44 +10,47 @@
 
 	<bean id="customAccessDenied"
 		class="org.zerock.security.CustomAccessDeniedHandler"></bean>
+		
+	  
 	<bean id="customLoginSuccess"
-		class="org.zerock.security.CustomLoginSuccessHandler"></bean> 
+		class="org.zerock.security.CustomLoginSuccessHandler"></bean>  
 	
-	<bean id="bcryptPasswordEncoder"
-		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	  <bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> 
 	
 	<bean id="customUserDetailsService"
 		class="org.zerock.security.CustomUserDetailsService"></bean>
 
-	<!-- <bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder"></bean> -->
+	<!--   <bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder"></bean>  -->
 
 	
 
 
 	<security:http>
-
-		 <security:intercept-url pattern="/home"
+		
+		 <security:csrf disabled="true" />
+		 <security:intercept-url pattern="/*/*/**/"
 			access="permitAll" />
 
-	 
+	 	<!-- 
 		<security:intercept-url
-			pattern="/home" access="hasRole('ROLE_MEMBER')" />
+			pattern="/community/community" access="hasRole('ROLE_MEMBER')" />
 
-		<security:intercept-url pattern="/home"
+		<security:intercept-url pattern="/community/community"
 			access="hasRole('ROLE_ADMIN')" />
 			
-		<security:intercept-url pattern="/home"
+		<security:intercept-url pattern="/community/community"
 			access="hasRole('ROLE_USER')" />
-		<security:intercept-url pattern="/**" access="permitAll"/>
-
 			
+		-->
 		<security:access-denied-handler
 			ref="customAccessDenied" />
+			
 
-		<!--  <security:form-login login-page="/customLogin"
-			authentication-success-handler-ref="customLoginSuccess" /> -->
+		  <security:form-login login-page="/customLogin"
+			authentication-success-handler-ref="customLoginSuccess" /> 
 
-	<security:form-login login-page="/customLogin" />	
+	<security:csrf disabled="true" />
 
 		<!-- <security:csrf disabled="true"/> -->
 
@@ -91,7 +94,7 @@
 			
 		<!--  	<security:password-encoder ref="customPasswordEncoder"/> -->
 		
-			<security:password-encoder ref="bcryptPasswordEncoder"/>
+			<security:password-encoder ref="bcryptPasswordEncoder"/> 
 
 		</security:authentication-provider>
 
