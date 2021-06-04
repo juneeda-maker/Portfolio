@@ -36,9 +36,11 @@
 	
 	
 	<insert id="insert">
-		insert all
-		into member (userid,userpw,username) values (#{userid}, #{userpw}, #{username})
-		into member_auth (userid, auth) values (#{userid}, ROLE_USER);
+		insert into member (userid,userpw,username) values (#{userid}, #{userpw}, #{username})
+	</insert>
+	
+	<insert id="insert_auth">
+		insert into member_auth(userid, auth) values (#{userid}, #{ROLE_USER})
 	</insert>
 	
 	

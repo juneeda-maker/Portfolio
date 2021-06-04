@@ -22,5 +22,8 @@ public class SignupServiceImpl {
 	public void signup(MemberVO member) {
 		log.info("sign up : ..." + member);
 		mapper.insert(member);
+		//mapper.insert_auth(member.getUserid(), "ROLE_USER");
 	}
+	
+	
 }

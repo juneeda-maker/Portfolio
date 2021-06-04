@@ -83,15 +83,15 @@
 		<div style="width:70%; margin:auto;" class="form-group">
 		  <div class="mb-3">
 		    <label for="exampleInputEmail1" class="form-label">아이디</label>
-		    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+		    <input type="text" class="form-control" name="userid">
 		  </div>
 		  <div class="mb-3">
 		    <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1">
+		    <input type="password" class="form-control" name="userpw">
 		  </div>
 		  <div class="mb-3">
 		    <label for="exampleInputPassword1" class="form-label">사용할 닉네임</label>
-		    <input type="text" class="form-control" id="exampleInputPassword1">
+		    <input type="text" class="form-control" name="username">
 		  </div>
 		  
 		  <button type="submit" class="btn btn-primary">Submit</button>
