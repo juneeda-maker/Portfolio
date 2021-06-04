@@ -78,75 +78,24 @@
 	    </div>
 	  </div>
 	</nav>
-	<!--  검색 파트  -->
 	
-	<form action="result" method="post">
-	  	<div style="width:70%; margin:auto;" class="form-group">
-	      <label for="exampleInputEmail1" class="form-label mt-4">영화 검색</label>
-	      <input class="form-control" id="keyword" name="keyword" onKeyUp="find()"
-	      			placeholder="영화 제목" value="">
-	      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-	    </div>
-	    
-	  	<div style="width:70%; margin:auto;" class="d-grid gap-2">
-			  <button class="btn btn-lg btn-primary" type="submit" onclick="find()">영화 찾기</button>
-		</div>
-	    
-	    <div id="result2"></div>
-    
+	<form action="/signup" method="post">
+		<div style="width:70%; margin:auto;" class="form-group">
+		  <div class="mb-3">
+		    <label for="exampleInputEmail1" class="form-label">아이디</label>
+		    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+		  </div>
+		  <div class="mb-3">
+		    <label for="exampleInputPassword1" class="form-label">비밀번호</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1">
+		  </div>
+		  <div class="mb-3">
+		    <label for="exampleInputPassword1" class="form-label">사용할 닉네임</label>
+		    <input type="text" class="form-control" id="exampleInputPassword1">
+		  </div>
+		  
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</div>  
 	</form>
-	
-	
-	<script>
-		function find(){
-			var keyword = $('#keyword').val();
-			$.ajax({
-				type: "GET",
-				url: "/search.do", 
-				data: {keyword : keyword},
-				dataType: "json",
-				contentType: "application/json; charset:UTF-8",
-				error: function(error){
-					console.log("error");
-				},
-				success: function(data){
-					$("#result2").empty();
-					console.log("success");
-					console.log(data);
-					
-					var html = "";
-					var item = data.items;
-					
-					html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
-					html += '<tbody>';
-					
-					
-					for(var i in item){
-						
-						var title = item[i].title;
-						
-						html += '<tr>';
-						html += '<td>';
-						html += title;
-						html +=  '</td>';
-						html += '</tr>';
-						
-						
-						$('#keyword').empty();
-						title = "";
-					}
-					
-					html += '</tbody></table>';
-					$("#result2").append(html);
-				}
-			});
-		}
-		
-		
-		
-	</script>
-
     </body>
 </html>
-
-

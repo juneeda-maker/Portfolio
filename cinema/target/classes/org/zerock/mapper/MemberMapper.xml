@@ -34,4 +34,14 @@
 	
 	</select>
 	
+	
+	<insert id="insert">
+		insert all
+		into member (userid,userpw,username) values (#{userid}, #{userpw}, #{username})
+		into member_auth (userid, auth) values (#{userid}, ROLE_USER);
+	</insert>
+	
+	
+	
+	
 </mapper>
