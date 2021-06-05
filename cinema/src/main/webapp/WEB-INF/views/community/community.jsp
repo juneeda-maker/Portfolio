@@ -5,9 +5,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"> 
         <!-- Core theme JS-->
+        
         <script src="/resources/js/scripts.js"></script>
     <head>
         <meta charset="utf-8" />
@@ -53,13 +57,13 @@
 	          </a>
         	</li>
 	        <li class="nav-item">
+	          <a class="nav-link" href="community/community">커뮤니티</a>
+	        </li>
+	        <li class="nav-item">
 	          <a class="nav-link" href="/customLogin">로그인</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="community">커뮤니티</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="#">About</a>
+	          <a class="nav-link" href="sinup">회원가입</a>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -72,10 +76,6 @@
 	          </div>
 	        </li>
 	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-sm-2" type="text" placeholder="Search">
-	        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-	      </form>
 	    </div>
 	  </div>
 	</nav>
@@ -107,6 +107,41 @@
   	</tr>
   </c:forEach>
 </table>
+
+<!--  
+<div class='pull-right'>
+	<ul class="pagination">
+		<c:if test="${pageMaker.prev }">
+			<li class="paginate_button previous"><a href="#">Previous</a></li>
+		</c:if>
+		<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+			<li class="paginate_button"><a href="#">${num }</a></li>
+		</c:forEach>
+		<c:if test="${pageMaker.next }">
+			<li class="paginate_button next"><a href="#">Next</a></li>
+		</c:if>
+	</ul>
+</div>
+-->
+
+<ul class="pagination justify-content-end">
+	<c:if test="${pageMaker.prev }">
+	    <li class="page-item disabled">
+	      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+	    </li>
+	</c:if>
+	<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+	    <li class="page-item"><a class="page-link" href="#">${num }</a></li>
+	</c:forEach>
+		<c:if test="${pageMaker.next }">
+	    	<li class="page-item">
+     			 <a class="page-link" href="#">Next</a>
+    		</li>
+	</c:if>
+	    
+</ul>
+
+
 </body>
 
 <script type="text/javascript">

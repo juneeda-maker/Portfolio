@@ -40,11 +40,11 @@
 	            <span class="visually-hidden">(current)</span>
 	          </a>
         	</li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="customLogin">로그인</a>
+        	<li class="nav-item">
+	          <a class="nav-link" href="/community/community">커뮤니티</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="/community/community">커뮤니티</a>
+	          <a class="nav-link" href="customLogin">로그인</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="signup">회원가입</a>
