@@ -8,5 +8,5 @@ public interface MemberMapper {
 
 	public void insert(MemberVO member);
 
-	public void insert_auth(String userid, String auth);
+	public void insert_auth(String userid);
 }

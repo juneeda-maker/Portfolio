@@ -40,7 +40,7 @@
 	</insert>
 	
 	<insert id="insert_auth">
-		insert into member_auth(userid, auth) values (#{userid}, #{ROLE_USER})
+		insert into member_auth(userid,auth) values (#{userid},'ROLE_USER')
 	</insert>
 	
 	
