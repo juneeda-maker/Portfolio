@@ -65,6 +65,9 @@
 	</nav>
 	
 	<form role="form" action="/community/modify" method="post">
+	<input type='hidden' name='pageNum' value='<c:outn value="${cri.pageNum }"/>'>
+	<input type='hidden' name='amount' value='<c:outn value="${cri.amount }"/>'>
+	
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
@@ -128,7 +131,12 @@
     			}else if(operation === 'community')
     			{
     				formObj.attr("action", "/community/community").attr("method","get");
+    				var pageNumTag = $("input[name='pageNum']").clone();
+    				var amountTag = $("input[name='amount']").clone();
+    				
     				formObj.empty();
+    				formObj.append(pageNumTag);
+    				formObj.append(amountTag);
     			}
     			formObj.submit();
     		});

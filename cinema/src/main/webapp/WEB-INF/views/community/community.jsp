@@ -8,11 +8,11 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"> 
+        <script src="/resources/js/scripts.js"></script>
         <!-- Core theme JS-->
         
-        <script src="/resources/js/scripts.js"></script>
+       
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -99,7 +99,7 @@
   <c:forEach items="${list}" var="board">
   	<tr class="table-active">
   		<td><c:out value="${board.bno }" /></td>
-  		<td><a href='/community/get?bno=<c:out value="${board.bno }"/>'>
+  		<td><a class='move' href='<c:out value="${board.bno }"/>'>
   			<c:out value="${board.title }"/></a></td>
   		<td><c:out value="${board.writer }" /></td>
   		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }" /></td>
@@ -123,24 +123,28 @@
 	</ul>
 </div>
 -->
+	<ul class="pagination">
+		<c:if test="${pageMaker.prev }">
+		    <li class="page-item">
+		      <a class="page-link" href="${pageMaker.startPage -1 }">Previous</a>
+		    </li>
+		</c:if>
+		<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+		    <li class="page-item ${pageMaker.cri.pageNum == num ? 'active':''} "><a class="page-link" href="${num }">${num }</a></li>
+		</c:forEach>
+			<c:if test="${pageMaker.next }">
+		    	<li class="page-item">
+	     			 <a class="page-link" href="${pageMaker.endPage + 1 }">Next</a>
+	    		</li>
+		</c:if>
+		    
+	</ul>
 
-<ul class="pagination justify-content-end">
-	<c:if test="${pageMaker.prev }">
-	    <li class="page-item disabled">
-	      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-	    </li>
-	</c:if>
-	<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-	    <li class="page-item"><a class="page-link" href="#">${num }</a></li>
-	</c:forEach>
-		<c:if test="${pageMaker.next }">
-	    	<li class="page-item">
-     			 <a class="page-link" href="#">Next</a>
-    		</li>
-	</c:if>
-	    
-</ul>
 
+<form id='actionForm' action="/community/community" method='get'>
+	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
+	<input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
+</form>
 
 </body>
 
@@ -155,7 +159,7 @@
 			
 			function checkModal(result){
 				
-				if(result === ''){
+				if(result === '' || history.state){
 					return;
 				}
 				if(parseInt(result) > 0){
@@ -167,6 +171,22 @@
 			
 			$("#regBtn").on("click", function(){
 				self.location = "/community/register";
+			});
+			
+			var actionForm = $("#actionForm");
+			
+			$(".page-item a").on("click", function(e){
+				e.preventDefault();
+				console.log('click');
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+			});
+			
+			$(".move").on("click", function(e){
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr("href")+"'>");
+				actionFrom.attr("action", "/community/get");
+				actionForm.submit();
 			});
 		});
 </script>
