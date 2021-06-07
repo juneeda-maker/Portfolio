@@ -47,7 +47,7 @@
 	          <a class="nav-link" href="/community/community">커뮤니티</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">About</a>
+	          <a class="nav-link" href="signup">회원가입</a>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -60,10 +60,7 @@
 	          </div>
 	        </li>
 	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-sm-2" type="text" placeholder="Search">
-	        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-	      </form>
+	      
 	    </div>
 	  </div>
 	</nav>	

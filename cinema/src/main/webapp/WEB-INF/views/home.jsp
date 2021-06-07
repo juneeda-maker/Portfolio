@@ -89,7 +89,7 @@
 	    </div>
 	    
 	  	<div style="width:70%; margin:auto;" class="d-grid gap-2">
-			  <button class="btn btn-lg btn-primary" type="submit" onclick="find()">영화 찾기</button>
+			  <button class="btn btn-lg btn-success btn-block" type="submit" onclick="find()">영화 찾기</button>
 		</div>
 	    
 	    <div id="result2"></div>
