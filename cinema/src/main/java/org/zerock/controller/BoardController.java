@@ -24,12 +24,6 @@ public class BoardController {
 
 	private BoardService service;
 	
-	//@GetMapping("/community")
-	//public void list(Model model)
-	//{
-	//	log.info("list");
-	//	model.addAttribute("list", service.getList());
-	//}
 	
 	@GetMapping("/community")
 	public void list(Criteria cri, Model model) {

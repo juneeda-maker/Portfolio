@@ -99,7 +99,7 @@
 				for(var i in item){
 					
 					var title = item[i].title;
-					var link = item[i].link;
+					
 					var image = item[i].image;
 					var subtitle = item[i].subtitle;
 					var pubDate = item[i].pubDate;
@@ -111,7 +111,6 @@
 					html += '<td>';
 					html += title
 					html +=  '</td>';
-					html += '<td>' + link + '</td>';
 					html += '<td>' + '<img src=' + image + '>' + '</td>';
 					html += '<td>' + subtitle + '</td>';
 					html += '<td>' + pubDate + '</td>';

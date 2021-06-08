@@ -75,21 +75,23 @@
 					<div class="panel-body">
 						<form role="form" method='post' action="/login">
 							<fieldset>
-								<div class="form-group">
+								<div class="form-group" style="margin:20px;">
 									<input class="form-control" placeholder="userid"
 										name="username" type="text" autofocus>
 								</div>
-								<div class="form-group">
+								<div class="form-group" style="margin:20px;">
 									<input class="form-control" placeholder="Password"
 										name="password" type="password" value="">
 								</div>
+								<!--  
 								<div class="checkbox">
 									<label> <input name="remember-me" type="checkbox">Remember
 										Me
 									</label>
 								</div>
+								-->
 								<!-- Change this to a button or input when using this as a form -->
-								<a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+								<a href="index.html" class="btn btn-lg btn-success btn-block" style="margin:20px;">Login</a>
 							</fieldset>
 							<!--  
 							<input type="hidden" name="${_csrf.parameterName}"
