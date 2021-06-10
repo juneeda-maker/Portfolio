@@ -65,8 +65,8 @@
 	</nav>
 	
 	<form role="form" action="/community/modify" method="post">
-	<input type='hidden' name='pageNum' value='<c:outn value="${cri.pageNum }"/>'>
-	<input type='hidden' name='amount' value='<c:outn value="${cri.amount }"/>'>
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum }"/>'>
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount }"/>'>
 	
 	<div class="row">
 		<div class="col-lg-12">

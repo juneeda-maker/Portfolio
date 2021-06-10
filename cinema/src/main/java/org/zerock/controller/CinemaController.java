@@ -29,7 +29,7 @@ public class CinemaController {
 	
 	private SignupServiceImpl service;
 	
-	@RequestMapping("/home") 
+	@RequestMapping("/") 
 	public String home(Model model) 
 	{ 
 		log.info("home");
