@@ -20,7 +20,7 @@ public class SignupServiceImpl {
 	private MemberMapper mapper;
 	
 	public void signup(MemberVO member) {
-		log.info("sign up : ..." + member);
+		log.info("sign up : ..." + member + member.getUserpw());
 		mapper.insert(member);
 		mapper.insert_auth(member.getUserid());
 	}

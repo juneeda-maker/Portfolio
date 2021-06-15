@@ -3,6 +3,7 @@ package org.zerock.controller;
 import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
@@ -19,6 +21,7 @@ import org.zerock.service.BoardService;
 import org.zerock.service.SignupServiceImpl;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -27,9 +30,12 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class CinemaController {
 	
+	@Setter(onMethod_ = @Autowired)
+	private PasswordEncoder pwencoder;
+	
 	private SignupServiceImpl service;
 	
-	@RequestMapping("/") 
+	@RequestMapping("/home") 
 	public String home(Model model) 
 	{ 
 		log.info("home");
@@ -58,9 +64,10 @@ public class CinemaController {
 	}
 	
 	@PostMapping("/signup")
-	public String signup(MemberVO member, RedirectAttributes rttr)
+	public String signup(MemberVO member, RedirectAttributes rttr, @RequestParam("userpw") String userpw)
 	{
 		log.info("회원가입 : " + member);
+		member.setUserpw(pwencoder.encode(userpw));
 		service.signup(member);
 		rttr.addFlashAttribute("result", member.getUserid());
 		
