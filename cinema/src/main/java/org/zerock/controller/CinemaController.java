@@ -63,6 +63,7 @@ public class CinemaController {
 		return "signup";
 	}
 	
+	//회원가입시 비밀번호 암호화 
 	@PostMapping("/signup")
 	public String signup(MemberVO member, RedirectAttributes rttr, @RequestParam("userpw") String userpw)
 	{
