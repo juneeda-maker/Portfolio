@@ -1,6 +1,6 @@
 # Portfolio
 
-
+##home 화면 
 <img width="1174" alt="스크린샷 2021-06-16 오후 3 49 37" src="https://user-images.githubusercontent.com/65453957/122171973-45315800-cebb-11eb-8a35-a8afa3f2cccf.png">
 <img width="1198" alt="스크린샷 2021-06-16 오후 3 53 24" src="https://user-images.githubusercontent.com/65453957/122172092-642fea00-cebb-11eb-8573-2dbac61fe72c.png">
 <img width="1207" alt="스크린샷 2021-06-16 오후 3 53 35" src="https://user-images.githubusercontent.com/65453957/122172162-73af3300-cebb-11eb-938d-de4604f163ac.png">
