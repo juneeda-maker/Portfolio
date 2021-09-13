@@ -52,7 +52,7 @@ public class MovieController {
 		
 		@RequestMapping(value="result", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 		@ResponseBody
-		public String getResult(@RequestParam(defaultValue="") String keyword)
+		public String getResult(@RequestParam(defaultValue="") String keyword) //@RequestParam jsp form 의 name 을 가져옴
 		{
 			return serviceimpl.findkeyword(keyword);
 		}

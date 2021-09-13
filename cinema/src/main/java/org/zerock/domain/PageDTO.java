@@ -17,7 +17,7 @@ public class PageDTO {
 		this.cri = cri;
 		this.total = total;
 		
-		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
+		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10; //반올림 예를들어 16페이지면 20페이지에서 끝남
 		this.startPage = this.endPage - 9;
 		
 		int realEnd = (int)(Math.ceil((total * 1.0) / cri.getAmount()));
