@@ -22,36 +22,38 @@ public class JsoupParser {
 		
 		public static void main(String[] args) {
 			// Jsoup를 이용해서 네이버 영화리뷰 크롤링
-			String url = "https://movie.naver.com/movie/point/af/list.naver";
+			String url = "https://movie.naver.com/movie/bi/mi/basic.naver?code=68984";
 			Document doc = null;
 			
 			try {
 				doc = Jsoup.connect(url).get();
-				Elements elements = doc.select("table.list_netizen");
-				Iterator<Element> titles = elements.select("a.color_b").iterator();
-				Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
-				Iterator<Element> reviews = elements.select("td.title").iterator();
+				Elements elements = doc.select(".score_reple");
+				//Iterator<Element> nick = elements.select("a.color_b").iterator();
+				//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
+				Iterator<Element> reviews = elements.select("p").iterator();
 				
 				Pattern pat;
 				Matcher mat;
 				
-				while(titles.hasNext())
+				int i = 0;
+				
+				while(i < 5)
 				{
-					String title = titles.next().text();
-					String score = scores.next().text();
-					String review = reviews.next().text().replace(title, "");
+					//String title = titles.next().text();
+					//String score = scores.next().text();
+					String review = reviews.next().text();
 					
-					review = review.substring(0, review.length()-3);
+					//review = review.substring(0, review.length()-3);
 					pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
 					
 					mat = pat.matcher(review);
 					review = mat.replaceAll("").trim();
 					
 					System.out.println("------------------------");
-					System.out.println("영화제목 : " + title);
-					System.out.println("평점 : " + score);
+					//System.out.println("영화제목 : " + title);
+					//System.out.println("평점 : " + score);
 					System.out.println("리뷰 : " + review);
-					
+					i++;
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
