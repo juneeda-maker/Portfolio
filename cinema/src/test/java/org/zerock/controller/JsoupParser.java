@@ -1,6 +1,10 @@
 package org.zerock.controller;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,31 +21,42 @@ public class JsoupParser {
 		 */
 		
 		public static void main(String[] args) {
-			// Jsoup를 이용해서 네이버 스포츠 크롤링
-			String url = "https://sports.news.naver.com/wfootball/index.nhn";
+			// Jsoup를 이용해서 네이버 영화리뷰 크롤링
+			String url = "https://movie.naver.com/movie/point/af/list.naver";
 			Document doc = null;
 			
 			try {
 				doc = Jsoup.connect(url).get();
+				Elements elements = doc.select("table.list_netizen");
+				Iterator<Element> titles = elements.select("a.color_b").iterator();
+				Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
+				Iterator<Element> reviews = elements.select("td.title").iterator();
+				
+				Pattern pat;
+				Matcher mat;
+				
+				while(titles.hasNext())
+				{
+					String title = titles.next().text();
+					String score = scores.next().text();
+					String review = reviews.next().text().replace(title, "");
+					
+					review = review.substring(0, review.length()-3);
+					pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
+					
+					mat = pat.matcher(review);
+					review = mat.replaceAll("").trim();
+					
+					System.out.println("------------------------");
+					System.out.println("영화제목 : " + title);
+					System.out.println("평점 : " + score);
+					System.out.println("리뷰 : " + review);
+					
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-			// 주요 뉴스로 나오는 태그를 찾아서 가져오도록 한다.
-			Elements element = doc.select("div.home_news");
-			
-			// 1. 헤더 부분의 제목을 가져온다.
-			String title = element.select("h2").text().substring(0, 4);
-
-			System.out.println("============================================================");
-			System.out.println(title);
-			System.out.println("============================================================");
-			
-			for(Element el : element.select("li")) {	// 하위 뉴스 기사들을 for문 돌면서 출력
-				System.out.println(el.text());
-			}
-			
-			System.out.println("============================================================");
-		}
 
 	}
+}
