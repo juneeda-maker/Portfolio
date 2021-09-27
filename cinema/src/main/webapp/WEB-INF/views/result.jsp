@@ -109,14 +109,19 @@
 					var userRating = item[i].userRating;
 					var link = item[i].link;
 					
+					
+					
 					var link2 = JSON.stringify(link);
 					
-					$(document).on("click", "#send", function(){
+					$(document).on("click", ".btn", function(){
+						var id_check = $(this).attr("id");
+						alert(id_check);
+						console.log(id_check);
 					    $.ajax({
 					    	type: 'GET',
 					    	dataType: 'json',
 							url : 'detail.do',
-							data: {link : link2},
+							data: {link : JSON.stringify(item[id_check].link)}, //여기부터 고쳐야한다 // id는 제대로 가져오나 가져온 id 값을 이용해 올바른 data 전달해야함 
 							contentType: 'application/json',
 							success: function(data) {
 								console.log("data", data);
@@ -147,7 +152,7 @@
 					
 					
 					html += '<tr>';
-					html += '<td>' + '<button id = "send">' + title + '</button>' + '</td>';
+					html += '<td>' + '<button class = "btn" id =' + i + '>' + title + '</button>' + '</td>';
 					html += '<td>' + '<img src=' + image + '>' + '</td>';
 					html += '<td>' + subtitle + '</td>';
 					html += '<td>' + pubDate + '</td>';
