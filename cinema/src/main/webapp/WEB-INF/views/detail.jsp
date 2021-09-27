@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
 <!DOCTYPE html>
 <html lang="en">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -81,72 +80,30 @@
 	</nav>
 	<!--  검색 파트  -->
 	
-	<form action="result" method="post">
-	  	<div style="width:70%; margin:auto;" class="form-group">
-	      <label for="exampleInputEmail1" class="form-label mt-4">영화 검색</label>
-	      <input class="form-control" id="keyword" name="keyword" onKeyUp="find()"
-	      			placeholder="영화 제목" value="">
-	      <small id="emailHelp" class="form-text text-muted">검색할 영화 제목을 입력해주세요.</small>
-	    </div>
-	    
-	  	<div style="width:70%; margin:auto;" class="d-grid gap-2">
-			  <button class="btn btn-lg btn-success btn-block" type="submit" onclick="find()">영화 찾기</button>
-		</div>
-	    
-	    <div id="result2"></div>
-    
-	</form>
 	
 	
 	<script>
-		function find(){
-			var keyword = $('#keyword').val();
-			$.ajax({
-				type: "GET",
-				url: "/search.do", 
-				data: {keyword : keyword},
-				dataType: "json",
-				contentType: "application/json; charset:UTF-8",
-				error: function(error){
-					console.log("error");
-				},
-				success: function(data){
-					$("#result2").empty();
-					console.log("success");
-					console.log(data);
-					
-					var html = "";
-					var item = data.items;
-					
-					html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
-					html += '<tbody>';
-					
-					
-					for(var i in item){
-						
-						var title = item[i].title;
-						
-						html += '<tr>';
-						html += '<td>';
-						html += title;
-						html +=  '</td>';
-						html += '</tr>';
-						
-						
-						$('#keyword').empty();
-						title = "";
-					}
-					
-					html += '</tbody></table>';
-					$("#result2").append(html);
-				}
-			});
-		}
-		
+	/* 
+	$(document).ready(function(){
+	{
+		$.ajax({
+			url : "detail.do",
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json; charset:UTF-8",
+			success: function(data)
+			{
+				
+			},
+			error:function()
+			{
+				alert('실패');
+			}
+		})
+	} */
 		
 		
 	</script>
 
     </body>
 </html>
-

@@ -73,6 +73,7 @@
 	</div>
 	
 	<script type="text/javascript">
+	
 	$(document).ready(function(){
 		var keyword = "<%=keyword%>";
 		$.ajax({
@@ -106,17 +107,54 @@
 					var director = item[i].director;
 					var actor = item[i].actor;
 					var userRating = item[i].userRating;
+					var link = item[i].link;
+					
+					var link2 = JSON.stringify(link);
+					
+					$(document).on("click", "#send", function(){
+					    $.ajax({
+					    	type: 'GET',
+					    	dataType: 'json',
+							url : 'detail.do',
+							data: {link : link2},
+							contentType: 'application/json',
+							success: function(data) {
+								console.log("data", data);
+					            alert("통신성공");
+					        },
+					        error: function() {
+					            console.log("fail");
+					        }
+						});
+					});
+					
+					/* function send_link()
+					{
+						$.ajax({
+							url : "/detail.do",
+							type: "POST",
+							data: JSON.stringify(link),
+							dataType: "json",
+							contentType: "application/json; charset:UTF-8",
+							success: function(data) {
+					            alert("통신성공");
+					        },
+					        error: function() {
+					            alert("error");
+					        }
+						});
+					} */
+					
 					
 					html += '<tr>';
-					html += '<td>';
-					html += title
-					html +=  '</td>';
+					html += '<td>' + '<button id = "send">' + title + '</button>' + '</td>';
 					html += '<td>' + '<img src=' + image + '>' + '</td>';
 					html += '<td>' + subtitle + '</td>';
 					html += '<td>' + pubDate + '</td>';
 					html += '<td>' + director + '</td>';
 					html += '<td>' + actor + '</td>';
 					html += '<td>' + userRating + '</td>';
+					html += '<td>' + link + '</td>';
 					html += '</tr>';
 					
 					title = "";
