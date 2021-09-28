@@ -96,6 +96,26 @@
 				html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
 				html += '<tbody>';
 				
+				$(document).on("click", ".btn", function(){
+					var id_check = $(this).attr("id");
+					alert(id_check);
+					console.log(id_check);
+				    $.ajax({
+				    	type: "GET",
+				    	dataType: "text", //서버에서 어떤 타입을 받을것인지.
+						url : "detail.do",
+						data: {link : item[id_check].link}, 
+						contentType: "application/json", //보내는 데이터 타입 
+						success: function(data) {
+							console.log("data", data);
+				            alert("통신성공");
+				        },
+				        error: function(request,status,error) {
+				            console.log("status : " + request.status + " msg : " + request.reponseText + " error : " + error);
+				        }
+					});
+				});
+				
 				
 				for(var i in item){
 					
@@ -109,46 +129,6 @@
 					var userRating = item[i].userRating;
 					var link = item[i].link;
 					
-					
-					
-					var link2 = JSON.stringify(link);
-					
-					$(document).on("click", ".btn", function(){
-						var id_check = $(this).attr("id");
-						alert(id_check);
-						console.log(id_check);
-					    $.ajax({
-					    	type: 'GET',
-					    	dataType: 'json',
-							url : 'detail.do',
-							data: {link : JSON.stringify(item[id_check].link)}, //여기부터 고쳐야한다 // id는 제대로 가져오나 가져온 id 값을 이용해 올바른 data 전달해야함 
-							contentType: 'application/json',
-							success: function(data) {
-								console.log("data", data);
-					            alert("통신성공");
-					        },
-					        error: function() {
-					            console.log("fail");
-					        }
-						});
-					});
-					
-					/* function send_link()
-					{
-						$.ajax({
-							url : "/detail.do",
-							type: "POST",
-							data: JSON.stringify(link),
-							dataType: "json",
-							contentType: "application/json; charset:UTF-8",
-							success: function(data) {
-					            alert("통신성공");
-					        },
-					        error: function() {
-					            alert("error");
-					        }
-						});
-					} */
 					
 					
 					html += '<tr>';
