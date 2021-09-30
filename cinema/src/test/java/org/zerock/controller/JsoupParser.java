@@ -22,15 +22,18 @@ public class JsoupParser {
 		
 		public static void main(String[] args) {
 			// Jsoup를 이용해서 네이버 영화리뷰 크롤링
-			String url = "https://movie.naver.com/movie/bi/mi/basic.naver?code=68984";
+			String url = "https://movie.naver.com/movie/bi/mi/basic.naver?code=20044";
 			Document doc = null;
 			
 			try {
 				doc = Jsoup.connect(url).get();
 				Elements elements = doc.select(".score_reple");
+				Elements high_score = doc.select("._sympathyButton");
 				//Iterator<Element> nick = elements.select("a.color_b").iterator();
 				//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
 				Iterator<Element> reviews = elements.select("p").iterator();
+				Iterator<Element> sympathy = high_score.select("strong").iterator();
+				
 				
 				Pattern pat;
 				Matcher mat;
@@ -39,6 +42,12 @@ public class JsoupParser {
 				
 				while(i < 5)
 				{
+					System.out.println("테스트 : " + review);
+					if(elements.isEmpty())
+					{
+						System.out.println("결과 없음.");
+						break;
+					}
 					//String title = titles.next().text();
 					//String score = scores.next().text();
 					String review = reviews.next().text();

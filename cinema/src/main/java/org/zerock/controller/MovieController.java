@@ -52,20 +52,36 @@ public class MovieController {
 			try {
 				doc = Jsoup.connect(url).get();
 				Elements elements = doc.select(".score_reple");
+				Elements high_score = doc.select(".btn_area");
 				//Iterator<Element> nick = elements.select("a.color_b").iterator();
 				//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
 				Iterator<Element> reviews = elements.select("p").iterator();
+				Iterator<Element> sympathy = high_score.select("._sympathyButton").iterator();
 				
 				Pattern pat;
 				Matcher mat;
 				
+				
+
+				if(elements.isEmpty()) //리뷰 존재하지 않는 경우.
+				{
+					System.out.println("결과 없음.");
+					return "평점 존재 하지 않음";
+				}
+				
 				int i = 0;
 				
-				while(i < 1)
+				while(i < 5)
 				{
-					//String title = titles.next().text();
+					if(!reviews.hasNext()) //존재하는 리뷰가 5개보다 적을때.
+					{
+						System.out.println("---------결과 끝.----------");
+						return "결과 출력 완료";
+					}
+					//String title = titles.next().text()s;
 					//String score = scores.next().text();
 					String review = reviews.next().text();
+					
 					
 					//review = review.substring(0, review.length()-3);
 					pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
@@ -77,6 +93,7 @@ public class MovieController {
 					//System.out.println("영화제목 : " + title);
 					//System.out.println("평점 : " + score);
 					System.out.println("리뷰 : " + review);
+					
 					i++;
 				}
 			} catch (IOException e) {
