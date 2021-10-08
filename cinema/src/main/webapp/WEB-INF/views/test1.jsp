@@ -61,123 +61,14 @@
 	        </li>
 	      </ul>
 	      
+	      <form action="/test2">
+	      	<input type="text" name="id"/>
+	      	<input type="submit" value="전송"/>
+	      </form>
+	      
 	    </div>
 	  </div>
 	</nav>	
-	
-	<p class="text-start">검색 결과 : <%=keyword %></p>
-	
-	
-	<div id="result">
-		
-	</div>
-	
-	<script type="text/javascript">
-	
-	$(document).ready(function(){
-		var keyword = "<%=keyword%>";
-		$.ajax({
-			type: "GET",
-			url: "/result", 
-			data: {keyword : keyword},
-			dataType: "json",
-			contentType: "application/json; charset:UTF-8",
-			error: function(error){
-				console.log("error");
-			},
-			success: function(data){
-				$("#result").empty();
-				console.log("success");
-				console.log(data);
-				
-				var html = "";
-				var item = data.items;
-				
-				html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
-				html += '<tbody>';
-				
-				
-				 /* $(document).on("click", ".btn", function(){
-					$('#frm').submit();
-					var id_check = $(this).attr("id");
-					alert(id_check);
-					console.log(id_check);
-				    $.ajax({
-				    	type: "GET",
-				    	dataType: "text", //서버에서 어떤 타입을 받을것인지.
-						url : "detail.do",
-						data: {link : item[id_check].link}, 
-						contentType: "application/json", //보내는 데이터 타입 
-						success: function(data) {
-							console.log("data", data);
-				            alert("통신성공");
-				        },
-				        error: function(request,status,error) {
-				            console.log("status : " + request.status + " msg : " + request.reponseText + " error : " + error);
-				        }
-					});
-				});  */
-				
-				
-				$(".move").on("click", function(e){
-					e.preventDefault();
-					fromObj.submit();
-				});
-				
-					
-				
-				
-					for(var i in item){
-					
-					var title = item[i].title;
-					
-					var image = item[i].image;
-					var subtitle = item[i].subtitle;
-					var pubDate = item[i].pubDate;
-					var director = item[i].director;
-					var actor = item[i].actor;
-					var userRating = item[i].userRating;
-					var link = item[i].link;
-					 
-					
-					
-					$('input[name=link]').attr('value', link);
-					
-					
-					
-					html += '<tr>';
-					html += '<td>' + '<a class = "move" href="/detail?link=' + link + '">' + title + '</a>' + '</td>';
-					html += '<td>' + '<img src=' + image + '>' + '</td>';
-					html += '<td>' + subtitle + '</td>';
-					html += '<td>' + pubDate + '</td>';
-					html += '<td>' + director + '</td>';
-					html += '<td>' + actor + '</td>';
-					html += '<td>' + userRating + '</td>';
-					html += '<td>' + link + '</td>';
-					html += '<form id="actionForm" action="/detail" method="get">';
-					html += '<input type="hidden" name="link" readonly="readonly" value="" />';
-					html += '</form>';
-					html += '</tr>';
-					
-					
-					
-					title = "";
-					link = "";
-					image = "";
-					subtitle = "";
-					pubDate = "";
-					director = "";
-					actor = "";
-					serRating = "";
-				}
-				
-				html += '</tbody></table>';
-				$("#result").append(html);
-			}
-		});
-	});
-	</script>
-	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -28,12 +28,15 @@ public class JsoupParser {
 			try {
 				doc = Jsoup.connect(url).get();
 				Elements elements = doc.select(".score_reple");
-				Elements high_score = doc.select("._sympathyButton");
+				Elements contexts = doc.select(".story_area").select(".con_tx");
 				//Iterator<Element> nick = elements.select("a.color_b").iterator();
 				//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
 				Iterator<Element> reviews = elements.select("p").iterator();
-				Iterator<Element> sympathy = high_score.select("strong").iterator();
+				//contexts = contexts.select("p");
 				
+				String context = contexts.text();
+				System.out.println(context);
+				System.out.println("**********줄거리**********");
 				
 				Pattern pat;
 				Matcher mat;
@@ -42,7 +45,7 @@ public class JsoupParser {
 				
 				while(i < 5)
 				{
-					System.out.println("테스트 : " + review);
+					
 					if(elements.isEmpty())
 					{
 						System.out.println("결과 없음.");

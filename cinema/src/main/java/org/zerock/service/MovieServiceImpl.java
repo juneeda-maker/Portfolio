@@ -9,9 +9,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.MovieVO;
 
 import java.net.HttpURLConnection;
@@ -153,5 +163,71 @@ public class MovieServiceImpl {
 		
 		return result + "";
 	}
+	
+	public String showDetail(String address) //@RequestParam("가져올 데이터의 이름") [데이터타입] [가져온데이터를 담을 변수]
+	{
+		
+		System.out.println("도착한 url :" + address);
+		
+		String url = address;
+		Document doc = null;
+		
+		try {
+			doc = Jsoup.connect(url).get();
+			Elements elements = doc.select(".score_reple");
+			Elements high_score = doc.select(".btn_area");
+			Elements contexts = doc.select(".story_area").select(".con_tx");
+			//Iterator<Element> nick = elements.select("a.color_b").iterator();
+			//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
+			Iterator<Element> reviews = elements.select("p").iterator();
+			Iterator<Element> sympathy = high_score.select("._sympathyButton").iterator();
+			
+			Pattern pat;
+			Matcher mat;
+			
+			String context = contexts.text();
+			System.out.println(context);
+			System.out.println("**********줄거리**********");
+			
+
+			if(elements.isEmpty()) //리뷰 존재하지 않는 경우.
+			{
+				System.out.println("결과 없음.");
+				return "평점 존재 하지 않음";
+			}
+			
+			int i = 0;
+			
+			while(i < 5)
+			{
+				if(!reviews.hasNext()) //존재하는 리뷰가 5개보다 적을때.
+				{
+					System.out.println("---------결과 끝.----------");
+					return "결과 출력 완료";
+				}
+				//String title = titles.next().text()s;
+				//String score = scores.next().text();
+				String review = reviews.next().text();
+				
+				
+				//review = review.substring(0, review.length()-3);
+				pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
+				
+				mat = pat.matcher(review);
+				review = mat.replaceAll("").trim();
+				
+				System.out.println("------------------------");
+				//System.out.println("영화제목 : " + title);
+				//System.out.println("평점 : " + score);
+				System.out.println("리뷰 : " + review);
+				
+				i++;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return address;
+}
 	
 }

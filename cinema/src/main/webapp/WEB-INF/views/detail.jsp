@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>     
+<%
+		String link = request.getParameter("link");
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -68,13 +74,7 @@
 	      	<a href="/customLogout">로그아웃</a>
 	     </sec:authorize>
 	      
-	      <p>
-	      <sec:authorize access="isAuthenticated()">
-	      	<sec:authentication property="principal.username" var="userid" />
-                    <div id="user_id">안녕하세요. ${userid }</div>
-	     </sec:authorize>
-	    </p>
-	     
+	      <p><%=link %></p>
 	    </div>
 	  </div>
 	</nav>
