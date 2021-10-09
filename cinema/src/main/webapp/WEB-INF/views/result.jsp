@@ -67,6 +67,9 @@
 	
 	<p class="text-start">검색 결과 : <%=keyword %></p>
 	
+	<form id="actionForm" action="detail.do" method="post">
+		<input type="hidden" class="hid" name="link" value="" />
+	</form>
 	
 	<div id="result">
 		
@@ -96,38 +99,8 @@
 				html += '<table class = "table"><thead><tr><th scope="col">영화 제목</th></tr></thead>';
 				html += '<tbody>';
 				
-				
-				 /* $(document).on("click", ".btn", function(){
-					$('#frm').submit();
-					var id_check = $(this).attr("id");
-					alert(id_check);
-					console.log(id_check);
-				    $.ajax({
-				    	type: "GET",
-				    	dataType: "text", //서버에서 어떤 타입을 받을것인지.
-						url : "detail.do",
-						data: {link : item[id_check].link}, 
-						contentType: "application/json", //보내는 데이터 타입 
-						success: function(data) {
-							console.log("data", data);
-				            alert("통신성공");
-				        },
-				        error: function(request,status,error) {
-				            console.log("status : " + request.status + " msg : " + request.reponseText + " error : " + error);
-				        }
-					});
-				});  */
-				
-				
-				$(".move").on("click", function(e){
-					e.preventDefault();
-					fromObj.submit();
-				});
-				
 					
-				
-				
-					for(var i in item){
+				for(var i in item){
 					
 					var title = item[i].title;
 					
@@ -138,15 +111,11 @@
 					var actor = item[i].actor;
 					var userRating = item[i].userRating;
 					var link = item[i].link;
-					 
-					
-					
-					$('input[name=link]').attr('value', link);
 					
 					
 					
 					html += '<tr>';
-					html += '<td>' + '<a class = "move" href="/detail?link=' + link + '">' + title + '</a>' + '</td>';
+					html += '<td>' + '<button class = "btn" id =' + i + '>' + title +'</button>' + '</td>';
 					html += '<td>' + '<img src=' + image + '>' + '</td>';
 					html += '<td>' + subtitle + '</td>';
 					html += '<td>' + pubDate + '</td>';
@@ -154,9 +123,6 @@
 					html += '<td>' + actor + '</td>';
 					html += '<td>' + userRating + '</td>';
 					html += '<td>' + link + '</td>';
-					html += '<form id="actionForm" action="/detail" method="get">';
-					html += '<input type="hidden" name="link" readonly="readonly" value="" />';
-					html += '</form>';
 					html += '</tr>';
 					
 					
@@ -169,13 +135,31 @@
 					director = "";
 					actor = "";
 					serRating = "";
-				}
+				} //for문
 				
 				html += '</tbody></table>';
+				
 				$("#result").append(html);
-			}
-		});
-	});
+				
+				
+				$(document).on("click", ".btn", function(e){
+					var id_check = $(this).attr("id");
+					$('.hid').val(item[id_check].link);
+					console.log($('.hid').val());
+					alert("click");
+					e.preventDefault();
+					$("form").submit();
+				});
+				
+				
+			}// success
+				
+				
+		});//ajax
+			
+		
+		  
+	}); //getready
 	</script>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

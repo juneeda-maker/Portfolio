@@ -161,12 +161,12 @@ public class MovieController {
 		
 		
 		
-		@RequestMapping(value = "/detail", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
-		public String detail(@RequestParam(value = "link") String link, Model model) 
+		@PostMapping("detail.do")
+		public String get_detail(@RequestParam("link") String link) 
 		{ 
-			
-			serviceimpl.showDetail(link);
-			model.addAttribute("link", link);
+			//serviceimpl.showDetail(link);
+			//String link = mv.getLink();
+			//model.addAttribute("link", link);
 			
 			System.out.println("ssssss");
 			System.out.println("링크 : " + link);
@@ -184,7 +184,10 @@ public class MovieController {
 		}
 		
 		
-		
-		
+//		@GetMapping("/detail")
+//		public String detail(Model model)
+//		{
+//			return "/detail";
+//		}
 	
 }
