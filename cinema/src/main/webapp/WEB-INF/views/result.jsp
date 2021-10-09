@@ -67,7 +67,7 @@
 	
 	<p class="text-start">검색 결과 : <%=keyword %></p>
 	
-	<form id="actionForm" action="detail.do" method="post">
+	<form id="actionForm" action="detail.do" method="get">
 		<input type="hidden" class="hid" name="link" value="" />
 	</form>
 	

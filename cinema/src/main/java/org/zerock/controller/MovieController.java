@@ -161,10 +161,10 @@ public class MovieController {
 		
 		
 		
-		@PostMapping("detail.do")
-		public String get_detail(@RequestParam("link") String link) 
+		@GetMapping("detail.do")
+		public String get_detail(@RequestParam("link") String link) //정보 조회이고 보안상의 문제고려 필요 x => get사용. 
 		{ 
-			//serviceimpl.showDetail(link);
+			serviceimpl.showDetail(link);
 			//String link = mv.getLink();
 			//model.addAttribute("link", link);
 			
