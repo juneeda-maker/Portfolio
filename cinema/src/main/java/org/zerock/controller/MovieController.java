@@ -1,6 +1,7 @@
 package org.zerock.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -48,73 +49,6 @@ public class MovieController {
 			return serviceimpl.findkeyword(keyword);
 		}
 		
-//		@RequestMapping(value="detail.do", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
-//		@ResponseBody
-//		public String showDetail(@RequestParam(value = "link") String link) //@RequestParam("가져올 데이터의 이름") [데이터타입] [가져온데이터를 담을 변수]
-//		{
-//			
-//			System.out.println("도착한 url :" + link);
-//			
-//			String url = link;
-//			Document doc = null;
-//			
-//			try {
-//				doc = Jsoup.connect(url).get();
-//				Elements elements = doc.select(".score_reple");
-//				Elements high_score = doc.select(".btn_area");
-//				Elements contexts = doc.select(".story_area").select(".con_tx");
-//				//Iterator<Element> nick = elements.select("a.color_b").iterator();
-//				//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
-//				Iterator<Element> reviews = elements.select("p").iterator();
-//				Iterator<Element> sympathy = high_score.select("._sympathyButton").iterator();
-//				
-//				Pattern pat;
-//				Matcher mat;
-//				
-//				String context = contexts.text();
-//				System.out.println(context);
-//				System.out.println("**********줄거리**********");
-//				
-//
-//				if(elements.isEmpty()) //리뷰 존재하지 않는 경우.
-//				{
-//					System.out.println("결과 없음.");
-//					return "평점 존재 하지 않음";
-//				}
-//				
-//				int i = 0;
-//				
-//				while(i < 5)
-//				{
-//					if(!reviews.hasNext()) //존재하는 리뷰가 5개보다 적을때.
-//					{
-//						System.out.println("---------결과 끝.----------");
-//						return "결과 출력 완료";
-//					}
-//					//String title = titles.next().text()s;
-//					//String score = scores.next().text();
-//					String review = reviews.next().text();
-//					
-//					
-//					//review = review.substring(0, review.length()-3);
-//					pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
-//					
-//					mat = pat.matcher(review);
-//					review = mat.replaceAll("").trim();
-//					
-//					System.out.println("------------------------");
-//					//System.out.println("영화제목 : " + title);
-//					//System.out.println("평점 : " + score);
-//					System.out.println("리뷰 : " + review);
-//					
-//					i++;
-//				}
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			return link;
-//	}
 			
 		
 		
@@ -162,12 +96,15 @@ public class MovieController {
 		
 		
 		@GetMapping("detail.do")
-		public String get_detail(@RequestParam("link") String link) //정보 조회이고 보안상의 문제고려 필요 x => get사용. 
+		public String get_detail(@RequestParam("link") String link, Model model) //정보 조회이고 보안상의 문제고려 필요 x => get사용. 
 		{ 
-			serviceimpl.showDetail(link);
+			String context = serviceimpl.showDetail(link).getContent();
+			ArrayList<String> review = serviceimpl.showDetail(link).getReview();
 			//String link = mv.getLink();
-			//model.addAttribute("link", link);
-			
+			model.addAttribute("context", context);
+			model.addAttribute("link", link);
+			model.addAttribute("review", review);
+			//model.addAttribute("", );
 			System.out.println("ssssss");
 			System.out.println("링크 : " + link);
 			return "detail"; 

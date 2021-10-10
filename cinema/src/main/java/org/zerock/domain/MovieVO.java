@@ -1,6 +1,8 @@
 package org.zerock.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -15,5 +17,8 @@ public class MovieVO {
 		public String director;
 		public String actor;
 		public float userRating;
-	
+		
+		public ArrayList<String> review;
+		public String content;
+		
 }

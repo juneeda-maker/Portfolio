@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -164,11 +165,11 @@ public class MovieServiceImpl {
 		return result + "";
 	}
 	
-	public String showDetail(String address) //@RequestParam("가져올 데이터의 이름") [데이터타입] [가져온데이터를 담을 변수]
+	public MovieVO showDetail(String address) //@RequestParam("가져올 데이터의 이름") [데이터타입] [가져온데이터를 담을 변수]
 	{
 		
 		System.out.println("도착한 url :" + address);
-		
+		MovieVO mv = new MovieVO();
 		String url = address;
 		Document doc = null;
 		
@@ -182,18 +183,27 @@ public class MovieServiceImpl {
 			Iterator<Element> reviews = elements.select("p").iterator();
 			Iterator<Element> sympathy = high_score.select("._sympathyButton").iterator();
 			
+			
+			ArrayList<String> list1 = new ArrayList<String>(5);
+			mv.review = list1;
+			
+			
+			
 			Pattern pat;
 			Matcher mat;
 			
 			String context = contexts.text();
+			
+			mv.content = context;
+			
 			System.out.println(context);
 			System.out.println("**********줄거리**********");
 			
 
 			if(elements.isEmpty()) //리뷰 존재하지 않는 경우.
 			{
-				System.out.println("결과 없음.");
-				return "평점 존재 하지 않음";
+				System.out.println("평점 존재 하지 않음");
+				return null;
 			}
 			
 			int i = 0;
@@ -203,13 +213,13 @@ public class MovieServiceImpl {
 				if(!reviews.hasNext()) //존재하는 리뷰가 5개보다 적을때.
 				{
 					System.out.println("---------결과 끝.----------");
-					return "결과 출력 완료";
+					break;
 				}
 				//String title = titles.next().text()s;
 				//String score = scores.next().text();
 				String review = reviews.next().text();
 				
-				
+				list1.add(review);
 				//review = review.substring(0, review.length()-3);
 				pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
 				
@@ -227,7 +237,7 @@ public class MovieServiceImpl {
 			e.printStackTrace();
 		}
 		
-		return address;
+		return mv;
 }
 	
 }

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
-<%
+
+<%-- <%
 	request.setCharacterEncoding("UTF-8");
 %>     
 <%
 		String link = request.getParameter("link");
-%>
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -74,13 +75,20 @@
 	      	<a href="/customLogout">로그아웃</a>
 	     </sec:authorize>
 	      
-	      <p><%=link %></p>
+	      <p>${link }</p>
 	    </div>
 	  </div>
 	</nav>
 	<!--  검색 파트  -->
 	
 	
+	
+	<div>
+		<p>${context }</p>
+		<c:forEach var="review" items="${review}" varStatus="status">
+			<p>review : <c:out value="${review}" /></p>
+		</c:forEach>
+	</div>
 	
 	<script>
 	/* 
