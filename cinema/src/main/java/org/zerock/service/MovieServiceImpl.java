@@ -176,26 +176,37 @@ public class MovieServiceImpl {
 		try {
 			doc = Jsoup.connect(url).get();
 			Elements elements = doc.select(".score_reple");
-			Elements high_score = doc.select(".btn_area");
+			//Elements high_score = doc.select(".btn_area");
 			Elements contexts = doc.select(".story_area").select(".con_tx");
+			Elements scores1 = doc.select("div.netizen_score"); //관람객 평점.
+			Elements scores2 = doc.select("div.special_score"); //전문가 평점.
+			Elements poster = doc.select("div.poster").select("img");
 			//Iterator<Element> nick = elements.select("a.color_b").iterator();
 			//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
 			Iterator<Element> reviews = elements.select("p").iterator();
-			Iterator<Element> sympathy = high_score.select("._sympathyButton").iterator();
+			//Iterator<Element> sympathy = high_score.select("._sympathyButton").iterator();
+			
+			String netizen_score = scores1.text();
+			String context = contexts.text();
+			String special_score = scores2.text();
+			String image = poster.attr("src");
 			
 			
 			ArrayList<String> list1 = new ArrayList<String>(5);
 			mv.review = list1;
-			
+			mv.content = context;
+			mv.netizen_score = netizen_score;
+			mv.special_score = special_score;
+			mv.image = image;
 			
 			
 			Pattern pat;
 			Matcher mat;
 			
-			String context = contexts.text();
-			
-			mv.content = context;
-			
+						
+			System.out.println("image src : " + image);
+			System.out.println("관람객 평점 : " + netizen_score);
+			System.out.println("전문가 평점 : " + special_score);
 			System.out.println(context);
 			System.out.println("**********줄거리**********");
 			
@@ -228,7 +239,7 @@ public class MovieServiceImpl {
 				
 				System.out.println("------------------------");
 				//System.out.println("영화제목 : " + title);
-				//System.out.println("평점 : " + score);
+				//ystem.out.println("평점 : " + score);
 				System.out.println("리뷰 : " + review);
 				
 				i++;

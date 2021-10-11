@@ -100,11 +100,16 @@ public class MovieController {
 		{ 
 			String context = serviceimpl.showDetail(link).getContent();
 			ArrayList<String> review = serviceimpl.showDetail(link).getReview();
+			String netizen_score = serviceimpl.showDetail(link).getNetizen_score();
+			String special_score = serviceimpl.showDetail(link).getSpecial_score();
+			String image = serviceimpl.showDetail(link).getImage();
 			//String link = mv.getLink();
 			model.addAttribute("context", context);
 			model.addAttribute("link", link);
 			model.addAttribute("review", review);
-			//model.addAttribute("", );
+			model.addAttribute("netizen_score", netizen_score);
+			model.addAttribute("special_score", special_score);
+			model.addAttribute("image", image);
 			System.out.println("ssssss");
 			System.out.println("링크 : " + link);
 			return "detail"; 

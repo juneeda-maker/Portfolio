@@ -22,18 +22,19 @@ public class JsoupParser {
 		
 		public static void main(String[] args) {
 			// Jsoup를 이용해서 네이버 영화리뷰 크롤링
-			String url = "https://movie.naver.com/movie/bi/mi/basic.naver?code=20044";
+			String url = "https://movie.naver.com/movie/bi/mi/basic.naver?code=161967";
 			Document doc = null;
 			
 			try {
 				doc = Jsoup.connect(url).get();
 				Elements elements = doc.select(".score_reple");
 				Elements contexts = doc.select(".story_area").select(".con_tx");
-				//Iterator<Element> nick = elements.select("a.color_b").iterator();
-				//Iterator<Element> scores = elements.select("div.list_netizen_score").iterator();
+				Elements scores = doc.select("div.netizen_score");
+				Iterator<Element> nick = elements.select("a.color_b").iterator();
 				Iterator<Element> reviews = elements.select("p").iterator();
 				//contexts = contexts.select("p");
-				
+				String score = scores.text();
+				System.out.println("평점 : " + score);
 				String context = contexts.text();
 				System.out.println(context);
 				System.out.println("**********줄거리**********");
@@ -55,7 +56,7 @@ public class JsoupParser {
 					//String score = scores.next().text();
 					String review = reviews.next().text();
 					
-					//review = review.substring(0, review.length()-3);
+					review = review.substring(0, review.length()-3);
 					pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
 					
 					mat = pat.matcher(review);
@@ -63,7 +64,6 @@ public class JsoupParser {
 					
 					System.out.println("------------------------");
 					//System.out.println("영화제목 : " + title);
-					//System.out.println("평점 : " + score);
 					System.out.println("리뷰 : " + review);
 					i++;
 				}

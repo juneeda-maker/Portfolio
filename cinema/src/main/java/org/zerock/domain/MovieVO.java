@@ -17,6 +17,8 @@ public class MovieVO {
 		public String director;
 		public String actor;
 		public float userRating;
+		public String netizen_score;
+		public String special_score;
 		
 		public ArrayList<String> review;
 		public String content;

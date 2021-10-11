@@ -75,43 +75,38 @@
 	      	<a href="/customLogout">로그아웃</a>
 	     </sec:authorize>
 	      
-	      <p>${link }</p>
+	
 	    </div>
 	  </div>
 	</nav>
 	<!--  검색 파트  -->
 	
 	
-	
 	<div>
+		<img src=${image } width="100" height="100" align="left">
 		<p>${context }</p>
-		<c:forEach var="review" items="${review}" varStatus="status">
-			<p>review : <c:out value="${review}" /></p>
-		</c:forEach>
 	</div>
-	
-	<script>
-	/* 
-	$(document).ready(function(){
-	{
-		$.ajax({
-			url : "detail.do",
-			type: "GET",
-			dataType: "json",
-			contentType: "application/json; charset:UTF-8",
-			success: function(data)
-			{
-				
-			},
-			error:function()
-			{
-				alert('실패');
-			}
-		})
-	} */
-		
-		
-	</script>
+	<!-- 줄거리 -->
+	<!-- 평점 -->
+	<div>
+		<table>
+			<tr><td>${netizen_score }</td></tr>
+			<tr><td>${special_score }</td></tr>
+		</table>
+	</div>
+	<!-- 리뷰 -->
+	<div>
+		<table>
+			<tr>
+				<th>review</th>
+			</tr>
+			<c:forEach var="review" items="${review}" varStatus="status">
+			<tr>
+					<td>review : <c:out value="${review}" /></td>
+			</tr>
+				</c:forEach>
+		</table>
+	</div>
 
     </body>
 </html>
