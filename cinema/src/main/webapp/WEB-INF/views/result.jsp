@@ -28,7 +28,7 @@
 	
 	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   		<div class="container-fluid">
-    	<a class="navbar-brand" href="home">movienet</a>
+    	<a class="navbar-brand" href="/home">movienet</a>
     	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
     	</button>
@@ -36,7 +36,7 @@
 	    <div class="collapse navbar-collapse" id="navbarColor02">
 	      <ul class="navbar-nav me-auto">
 	        <li class="nav-item">
-	          <a class="nav-link active" href="home">Home
+	          <a class="nav-link active" href="/home">Home
 	            <span class="visually-hidden">(current)</span>
 	          </a>
         	</li>
@@ -47,7 +47,7 @@
 	          <a class="nav-link" href="/community/community">커뮤니티</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="signup">회원가입</a>
+	          <a class="nav-link" href="/signup">회원가입</a>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -122,13 +122,11 @@
 					html += '<td>' + director + '</td>';
 					html += '<td>' + actor + '</td>';
 					html += '<td>' + userRating + '</td>';
-					html += '<td>' + link + '</td>';
 					html += '</tr>';
 					
 					
 					
 					title = "";
-					link = "";
 					image = "";
 					subtitle = "";
 					pubDate = "";

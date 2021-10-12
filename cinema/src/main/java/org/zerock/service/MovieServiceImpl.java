@@ -210,39 +210,40 @@ public class MovieServiceImpl {
 			System.out.println(context);
 			System.out.println("**********줄거리**********");
 			
-
+			int i = 0;
+			
 			if(elements.isEmpty()) //리뷰 존재하지 않는 경우.
 			{
 				System.out.println("평점 존재 하지 않음");
-				return null;
+				list1.add("평점 존재 하지 않음.");
 			}
-			
-			int i = 0;
-			
-			while(i < 5)
+			else
 			{
-				if(!reviews.hasNext()) //존재하는 리뷰가 5개보다 적을때.
+				while(i < 5)
 				{
-					System.out.println("---------결과 끝.----------");
-					break;
+					if(!reviews.hasNext()) //존재하는 리뷰가 5개보다 적을때.
+					{
+						System.out.println("---------결과 끝.----------");
+						break;
+					}
+					//String title = titles.next().text()s;
+					//String score = scores.next().text();
+					String review = reviews.next().text();
+					
+					list1.add(review);
+					//review = review.substring(0, review.length()-3);
+					pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
+					
+					mat = pat.matcher(review);
+					review = mat.replaceAll("").trim();
+					
+					System.out.println("------------------------");
+					//System.out.println("영화제목 : " + title);
+					//ystem.out.println("평점 : " + score);
+					System.out.println("리뷰 : " + review);
+					
+					i++;
 				}
-				//String title = titles.next().text()s;
-				//String score = scores.next().text();
-				String review = reviews.next().text();
-				
-				list1.add(review);
-				//review = review.substring(0, review.length()-3);
-				pat = Pattern.compile("별점 - 총 10 점 중[0-9]{1,2} ");
-				
-				mat = pat.matcher(review);
-				review = mat.replaceAll("").trim();
-				
-				System.out.println("------------------------");
-				//System.out.println("영화제목 : " + title);
-				//ystem.out.println("평점 : " + score);
-				System.out.println("리뷰 : " + review);
-				
-				i++;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

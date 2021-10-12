@@ -31,11 +31,11 @@
     		<div class="modal-content">
     			<div class="modal-header">
     				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+    				<h4 class="modal-title" id="myModalLabel">게시글 등록</h4>
     			</div>
     			<div class="modal-body">처리가 완료되었습니다.</div>
     			<div class="modal-footer">
-    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    				<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
     				<button type="button" class="btn btn-primary">Save Changes</button>
     			</div>
     		</div>
@@ -44,7 +44,7 @@
         <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   		<div class="container-fluid">
-    	<a class="navbar-brand" href="home">movienet</a>
+    	<a class="navbar-brand" href="/home">movienet</a>
     	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
     	</button>
@@ -52,7 +52,7 @@
 	    <div class="collapse navbar-collapse" id="navbarColor02">
 	      <ul class="navbar-nav me-auto">
 	        <li class="nav-item">
-	          <a class="nav-link active" href="home">Home
+	          <a class="nav-link active" href="/home">Home
 	            <span class="visually-hidden">(current)</span>
 	          </a>
         	</li>
@@ -80,8 +80,8 @@
 	  </div>
 	</nav>
 	
-	<div class="panel-heading">Board List Page
-		<button id='regBtn' type="button" class="btn btn-xs pull-right">Register New Board</button>
+	<div class="panel-heading">커뮤니티 게시판
+		<button id='regBtn' type="button" class="btn btn-xs pull-right">게시글 등록하기</button>
 	</div>
 	
 	<!--  검색 파트  -->

@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
-
-<%-- <%
-	request.setCharacterEncoding("UTF-8");
-%>     
-<%
-		String link = request.getParameter("link");
-%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -30,12 +23,19 @@
         <link rel="icon" type="image/x-icon" href="/resources/assets/favicon.ico" />
         <!-- Core theme resources/css (includes Bootstrap)-->
         <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+        	.content{
+        		margin: 100px;
+        		align-content: space-around;
+        	}
+        	
+        </style>
     </head>
     <body>
         <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   		<div class="container-fluid">
-    	<a class="navbar-brand" href="home">movienet</a>
+    	<a class="navbar-brand" href="/home">movienet</a>
     	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       	<span class="navbar-toggler-icon"></span>
     	</button>
@@ -43,7 +43,7 @@
 	    <div class="collapse navbar-collapse" id="navbarColor02">
 	      <ul class="navbar-nav me-auto">
 	        <li class="nav-item">
-	          <a class="nav-link active" href="home">Home
+	          <a class="nav-link active" href="/home">Home
 	            <span class="visually-hidden">(current)</span>
 	          </a>
         	</li>
@@ -51,10 +51,10 @@
 	          <a class="nav-link" href="/community/community">커뮤니티</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="customLogin">로그인</a>
+	          <a class="nav-link" href="/customLogin">로그인</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="signup">회원가입</a>
+	          <a class="nav-link" href="/signup">회원가입</a>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -81,32 +81,33 @@
 	</nav>
 	<!--  검색 파트  -->
 	
+
 	
 	<div>
-		<img src=${image } width="100" height="100" align="left">
-		<p>${context }</p>
+		<div  class="content">
+			<img src=${image } width="150" height="150" align="left">${context }<p>
+		</div> 
+		<!-- 줄거리 -->
+		<!-- 평점 -->
+		<div class="content">
+			<table>
+				<tr><td class="fw-bold">${netizen_score }</td></tr>
+				<tr><td class="fw-bold">${special_score }</td></tr>
+			</table>
+		</div>
+		<!-- 리뷰 -->
+		<div class="content">
+			<table class="table table-striped">
+				<tr>
+					<th>review</th>
+				</tr>
+				<c:forEach var="review" items="${review}" varStatus="status">
+				<tr>
+						<td>review : <c:out value="${review}" /></td>
+				</tr>
+					</c:forEach>
+			</table>
+		</div>
 	</div>
-	<!-- 줄거리 -->
-	<!-- 평점 -->
-	<div>
-		<table>
-			<tr><td>${netizen_score }</td></tr>
-			<tr><td>${special_score }</td></tr>
-		</table>
-	</div>
-	<!-- 리뷰 -->
-	<div>
-		<table>
-			<tr>
-				<th>review</th>
-			</tr>
-			<c:forEach var="review" items="${review}" varStatus="status">
-			<tr>
-					<td>review : <c:out value="${review}" /></td>
-			</tr>
-				</c:forEach>
-		</table>
-	</div>
-
     </body>
 </html>
