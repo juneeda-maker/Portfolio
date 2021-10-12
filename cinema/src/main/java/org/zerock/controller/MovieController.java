@@ -49,17 +49,6 @@ public class MovieController {
 			return serviceimpl.findkeyword(keyword);
 		}
 		
-			
-		
-		
-		/*
-		@RequestMapping(value="result.do", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
-		@ResponseBody
-		public String getResult(@RequestParam(defaultValue="") String kerword, String title)
-		{
-			return serviceimpl.link_btn(title);
-		}
-		*/
 		
 		@RequestMapping("/result") 
 		public String result(Model model) 

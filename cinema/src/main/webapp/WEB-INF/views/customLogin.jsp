@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE htm PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<!DOCTYPE html>
 <html lang="en">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -62,6 +63,25 @@
 	    </div>
 	  </div>
 	</nav>
+	
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    				<h4 class="modal-title" id="myModalLabel">게시글 등록</h4>
+    			</div>
+    			<div class="modal-body">처리가 완료되었습니다.</div>
+    			<div class="modal-footer">
+    				<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+    				<button type="button" class="btn btn-primary">Save Changes</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+	
 	<!--  검색 파트  -->
 
 
@@ -90,44 +110,40 @@
 									</label>
 								</div>
 								-->
+								<c:if test="${error eq 'N' }">
+									<small id="emailHelp" class="form-text text-muted">존재하지 않는 아이디 혹은 비밀번호가 틀립니다.</small>
+								</c:if>
 								<!-- Change this to a button or input when using this as a form -->
-								<a href="index.html" class="btn btn-lg btn-success btn-block" style="margin:20px;">Login</a>
+								<a class="btn btn-lg btn-success btn-block" style="margin:20px;">Login</a>
 							</fieldset>
 							<!--  
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
 							-->
 						</form>
-
+						   
+    
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
+    
+
+    
+    
+   
+	<script type="text/javascript">
 	
-	
-	 <!-- jQuery -->
-    <script src="/resources/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/resources/vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/resources/dist/js/sb-admin-2.js"></script>
     
-    
-    <script>
-    
-    $(".btn-success").on("click",function(e){
-    
-    	e.preventDefault();
-    	$("form").submit();
-    });
-    </script>
+    	$(".btn-success").on("click",function(e){
+			 e.preventDefault();
+		    $("form").submit();
+    	});  
+		    
+		
+	</script>
 	
 </body>
 </html>

@@ -4,6 +4,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.zerock.security.CustomUserDetailsService;
+import org.zerock.service.SignupServiceImpl;
 
 import lombok.extern.log4j.Log4j;
 
@@ -11,6 +14,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class CommonController {
 
+	private CustomUserDetailsService service;
+	
 	@GetMapping("/accessError")
 	public void accessDenied(Authentication auth, Model model)
 	{
@@ -21,16 +26,19 @@ public class CommonController {
 	@GetMapping("/customLogin")
 	public void loginInput(String error, String logout, Model model)
 	{
+		
 		log.info("error: " + error);
 		log.info("logout: " + logout);
 		
+		//log.info("user" + username);
 		if(error != null) {
-			model.addAttribute("error", "Login Error Check Your Account");
+			model.addAttribute("error", "N");
 		}
 		if(logout != null)
 		{
 			model.addAttribute("logout", "Logout!!");
 		}
+		System.out.println("SSSDSDAD");
 	}
 	
 	@GetMapping("/customLogout")
