@@ -35,11 +35,11 @@ public class CinemaController {
 	
 	private SignupServiceImpl service;
 	
-	@RequestMapping("/home") 
-	public String home(Model model) 
+	@RequestMapping("/index") 
+	public String index(Model model) 
 	{ 
-		log.info("home");
-		return "home"; 
+		log.info("index");
+		return "index"; 
 	}
 	
 	@RequestMapping("/community")
@@ -72,7 +72,7 @@ public class CinemaController {
 		service.signup(member);
 		rttr.addFlashAttribute("result", member.getUserid());
 		
-		return "redirect:/home";
+		return "redirect:/index";
 	}
 	
 	

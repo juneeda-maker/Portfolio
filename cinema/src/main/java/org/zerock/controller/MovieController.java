@@ -57,17 +57,6 @@ public class MovieController {
 		}
 		
 		
-//		@RequestMapping(value="detail", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
-//		@ResponseBody
-//		public String detail(@RequestBody Map<String,Object> map, Model model) 
-//		{ 
-//			//model.addAttribute("link", link);
-//			System.out.println("ssssss");
-//			System.out.println("링크 : " + map.get("link").toString());
-//			String link = map.get("link").toString();
-//			return "detail"; 
-//		}
-		
 		/*
 		@RequestMapping(value="/detail", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 		@ResponseBody
@@ -109,8 +98,9 @@ public class MovieController {
 		
 		@RequestMapping(value="result", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 		@ResponseBody
-		public String getResult(@RequestParam(defaultValue="") String keyword) //@RequestParam jsp form 의 name 을 가져옴
+		public String getResult(@RequestParam(defaultValue="") String keyword, Model model) //@RequestParam jsp form 의 name 을 가져옴
 		{
+			model.addAttribute("keyword", keyword);
 			return serviceimpl.findkeyword(keyword);
 		}
 		

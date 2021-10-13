@@ -30,7 +30,7 @@ public class CommonController {
 		log.info("error: " + error);
 		log.info("logout: " + logout);
 		
-		//log.info("user" + username);
+		
 		if(error != null) {
 			model.addAttribute("error", "N");
 		}
