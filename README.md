@@ -30,8 +30,8 @@
 
 
 ## 개발환경
--language : JAVA 1.8
--framework : spring, spring security
--DB : OracleDB
--UI : bootstrap
--etc : mybatis, lombok
+-language : JAVA 1.8  
+-framework : spring, spring security  
+-DB : OracleDB  
+-UI : bootstrap  
+-etc : mybatis, lombok, jsoup
