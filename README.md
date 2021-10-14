@@ -27,3 +27,11 @@
 ## 로그인 상태에 따른 버튼 (로그인/ 로그아웃)
 <img width="1216" alt="스크린샷 2021-06-16 오후 3 57 33" src="https://user-images.githubusercontent.com/65453957/122172291-95a8b580-cebb-11eb-9805-bf31ad1084d1.png">
 <img width="1215" alt="스크린샷 2021-06-16 오후 3 57 27" src="https://user-images.githubusercontent.com/65453957/122172325-9ccfc380-cebb-11eb-8f36-f558098d060c.png">
+
+
+## 개발환경
+-language : JAVA 1.8
+-framework : spring, spring security
+-DB : OracleDB
+-UI : bootstrap
+-etc : mybatis, lombok
