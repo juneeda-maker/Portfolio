@@ -45,7 +45,7 @@ public class BoardController {
 		service.register(board);
 		rttr.addFlashAttribute("result", board.getBno());
 		
-		return "redirect:/community";
+		return "redirect:/community/community";
 	}
 	
 	@GetMapping({"/get","/modify"})
@@ -67,7 +67,7 @@ public class BoardController {
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		
-		return "redirect:/community";
+		return "redirect:/community/community";
 	}
 	
 	@PostMapping("/remove")
@@ -79,7 +79,7 @@ public class BoardController {
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		
-		return "redirect:/community";
+		return "redirect:/community/community";
 	}
 	
 

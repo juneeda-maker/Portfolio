@@ -57,20 +57,6 @@ public class MovieController {
 		}
 		
 		
-		/*
-		@RequestMapping(value="/detail", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
-		@ResponseBody
-		public String detail(@RequestBody MovieVO getLinkVO, RedirectAttributes rttr) 
-		{ 
-			//model.addAttribute("link", link);
-			String link = getLinkVO.getLink();
-			System.out.println("ssssss");
-			System.out.println("링크 : " + getLinkVO.getLink());
-			rttr.addFlashAttribute("link", link);
-			return "detail";
-		}
-		*/
-		
 		
 		
 		@GetMapping("detail.do")
@@ -104,11 +90,5 @@ public class MovieController {
 			return serviceimpl.findkeyword(keyword);
 		}
 		
-		
-//		@GetMapping("/detail")
-//		public String detail(Model model)
-//		{
-//			return "/detail";
-//		}
 	
 }

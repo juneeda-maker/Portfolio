@@ -38,7 +38,6 @@ public class CommonController {
 		{
 			model.addAttribute("logout", "Logout!!");
 		}
-		System.out.println("SSSDSDAD");
 	}
 	
 	@GetMapping("/customLogout")

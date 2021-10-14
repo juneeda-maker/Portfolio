@@ -35,11 +35,11 @@ public class CinemaController {
 	
 	private SignupServiceImpl service;
 	
-	@RequestMapping("/index") 
-	public String index(Model model) 
+	@RequestMapping("/home") 
+	public String home(Model model) 
 	{ 
-		log.info("index");
-		return "index"; 
+		log.info("home");
+		return "home"; 
 	}
 	
 	@RequestMapping("/community")
@@ -72,32 +72,9 @@ public class CinemaController {
 		service.signup(member);
 		rttr.addFlashAttribute("result", member.getUserid());
 		
-		return "redirect:/index";
+		return "redirect:/home";
 	}
 	
 	
-	/*
-	@RequestMapping("/customLogin")
-	public String loginpage(Model model)
-	{
-		log.info("customLogin");
-		return "customLogin";
-	}
-	*/
-	
-	/*
-	@GetMapping("/customLogin")
-	public void login(String error, String logout, Model model)
-	{	
-		if(error != null)
-		{
-			model.addAttribute("error", "Login Error Check Your Account");
-		}
-		if(logout != null)
-		{
-			model.addAttribute("logout", "Logout!!!");
-		}
-	}
-	*/
 	
 }
