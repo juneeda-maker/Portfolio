@@ -3,10 +3,11 @@
 ## home 화면 
 <img width="1174" alt="스크린샷 2021-06-16 오후 3 49 37" src="https://user-images.githubusercontent.com/65453957/122171973-45315800-cebb-11eb-8a35-a8afa3f2cccf.png">
 <img width="1198" alt="스크린샷 2021-06-16 오후 3 53 24" src="https://user-images.githubusercontent.com/65453957/122172092-642fea00-cebb-11eb-8573-2dbac61fe72c.png">
+영화 제목을 입력하여 검색하기 위한 home 
 
 ## 검색 
 <img width="1207" alt="스크린샷 2021-06-16 오후 3 53 35" src="https://user-images.githubusercontent.com/65453957/122172162-73af3300-cebb-11eb-938d-de4604f163ac.png">
-검색 후 영화제목 클릭시 리뷰와 줄거리 출력 페이지로 이동
+검색 후 영화제목 클릭시 네이버 영화 페이지를 크롤링을 이용하여 뷰와 줄거리 출력 페이지로 이동 후 정보 출력
 <img width="974" alt="스크린샷 2021-10-14 오후 6 32 14" src="https://user-images.githubusercontent.com/65453957/137291267-c5e586f3-d5d6-43c6-bc82-aa5f31d51c03.png">
 
 
