@@ -13,6 +13,9 @@
 
 ## 로그인 화면 
 <img width="770" alt="스크린샷 2021-06-16 오후 3 53 03" src="https://user-images.githubusercontent.com/65453957/122172169-76118d00-cebb-11eb-959a-6055d7bc3d26.png">
+존재하지 않는 아이디 혹은 잘못된 비밀번호로 접근시
+<img width="417" alt="스크린샷 2021-10-14 오후 6 34 58" src="https://user-images.githubusercontent.com/65453957/137291740-53c771e1-3ffa-43a0-ac11-78d4828fb3dc.png">
+
 
 ## 회원가입 화면 
 <img width="1195" alt="스크린샷 2021-06-16 오후 3 52 51" src="https://user-images.githubusercontent.com/65453957/122172182-79a51400-cebb-11eb-9518-22784cc4e37c.png">
